@@ -59,10 +59,7 @@ const Login = () => {
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-3 flex flex-col justify-center items-center">
-        {/* <h1 className="text-2xl sm:text-[26px] lg:text-[34px] text-rose-500 font-medium">
-          Login
-        </h1> */}
+      <div className="mt-5 flex flex-col justify-center items-center">
         <div
           style={{
             width: isMobile && "85%",

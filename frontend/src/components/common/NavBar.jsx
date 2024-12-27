@@ -31,7 +31,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="w-full flex items-start justify-center py-5 px-3 sm:px-5 md:px-7">
+    <div className="w-full bg-white flex items-start justify-center py-3 px-3 sm:px-5 md:px-7">
       <div className="w-full flex items-center justify-between">
         <div className="w-[60%] flex items-center gap-3 sm:gap-4">
           <NavLink
