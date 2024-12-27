@@ -104,11 +104,11 @@ const CustomOtpInput = () => {
             onChange={setOtp}
             numInputs={6}
             separator={<span>-</span>}
-            containerStyle="flex sm:gap-0 justify-center gap-2 flex-wrap"
+            containerStyle="flex sm:gap-0 gap-2 flex-wrap"
             renderInput={(props) => (
               <input
                 {...props}
-                className="text-center border border-gray-300 sm:m-[0.5rem] rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="text-center border border-gray-300 sm:m-[0.5rem] rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500"
                 style={{
                   width: isMobile ? "38px" : "40px",
                   height: isMobile ? "38px" : "40px",
@@ -131,7 +131,7 @@ const CustomOtpInput = () => {
             className={`w-full py-3 rounded-lg font-medium transition ${
               isDisabled
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-red-500 text-white hover:bg-red-600"
+                : "bg-rose-500 text-white hover:bg-rose-600"
             }`}
           >
             {isLoading ? "Verifying..." : "Verify OTP"}
