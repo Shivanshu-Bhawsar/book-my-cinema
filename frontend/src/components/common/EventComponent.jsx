@@ -5,7 +5,7 @@ import weekendPlan from "../../utils/weekendPlan.jpeg";
 
 const EventComponent = () => {
   return (
-    <div className="sm:h-[0] overflow-hidden w-screen h-max pl-2 pr-2 flex flex-col items-start justify-center mb-3">
+    <div className="sm:h-[0] overflow-hidden w-screen h-max pl-2 pr-2 flex flex-col items-start justify-center my-3">
       <p className="text-[24px] font-[700]">BEST EVENTS THIS WEEK</p>
       <p className="text-[14px] font-normal">
         Monday To Sunday, we got you covered

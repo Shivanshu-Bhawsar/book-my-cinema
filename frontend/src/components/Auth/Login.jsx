@@ -54,17 +54,17 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="h-screen bg-gray-100">
       <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-5 flex flex-col justify-center items-center">
+      <div className="my-5 flex flex-col justify-center items-center">
         <div
           style={{
             width: isMobile && "85%",
           }}
-          className="mb-5 p-2 flex flex-col items-center justify-center gap-1 bg-white rounded-lg shadow-xl"
+          className="p-2 flex flex-col items-center justify-center gap-1 bg-white rounded-lg shadow-xl"
         >
           <div className="w-full mt-3 text-[rgb(51,51,51)] text-sm sm:text-base font-medium flex flex-col items-center justify-center">
             <span>Hi, Welcome Back</span>

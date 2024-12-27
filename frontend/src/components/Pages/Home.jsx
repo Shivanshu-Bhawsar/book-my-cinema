@@ -74,7 +74,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <NavBar />
       <HomeSlider />
       {isLoading ? (
@@ -82,9 +82,9 @@ const Home = () => {
           <div className="custom-loader text-center"></div>
         </div>
       ) : (
-        <div className="sm:overflow-x-hidden mt-8 overflow-y-auto flex flex-col items-start justify-center bg-white">
-          <p className="p-3 text-[18px] font-sans font-[500]">
-            Recommend Movies
+        <div className="sm:overflow-x-hidden mt-8 overflow-y-auto flex flex-col items-start justify-center">
+          <p className="py-2 px-9 text-lg sm:text-xl font-medium">
+            Recommended Movies
           </p>
           <div
             className="w-full flex gap-5 p-3 mb-5 flex-wrap items-center justify-center
@@ -122,7 +122,7 @@ const Home = () => {
       <div className="w-screen h-max p-18 mt-5 mb-0 sm:mb-5">
         <SliderComponent></SliderComponent>
       </div>
-      <div className="w-[100vw]">
+      <div className="w-[100vw] bg-white">
         <video
           src={gifVedio}
           autoPlay
@@ -131,12 +131,11 @@ const Home = () => {
           className="w-full h-[150px] sm:h-0 opacity-100 sm:opacity-0 pointer-events-none"
         ></video>
       </div>
-      <div className="">
-        <PremiereComponent />
-      </div>
-      <div>
-        <EventComponent />
-      </div>
+
+      <PremiereComponent />
+
+      <EventComponent />
+
       <Footer />
 
       <BottomNavBar />

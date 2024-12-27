@@ -105,7 +105,7 @@ const HomeSlider = ({ isShow = true }) => {
   }, [newIndex]);
 
   return (
-    <div className="w-full flex flex-col items-center justify-center bg-white sm:bg-[rgb(245,245,245)]">
+    <div className="w-full flex flex-col items-center justify-center bg-gray-100">
       <div className="w-full sm:h-auto h-[0px] opacity-0 sm:opacity-100 py-3 px-5 md:px-7 flex flex-wrap gap-2 items-center justify-between bg-white sm:bg-[rgb(245,245,245)]">
         <div>
           <ul
@@ -185,7 +185,7 @@ const HomeSlider = ({ isShow = true }) => {
         )}
       </div>
       {isShow && (
-        <div className="w-full mt-0  relative sm:py-3  md:py-4 sm:bg-[rgb(235,235,235)] overflow-hidden overflow-y-hidden">
+        <div className="w-full mt-0  relative sm:py-3  md:py-4 overflow-hidden overflow-y-hidden">
           <div
             ref={sliderRef}
             className="sm:w-full sm:opacity-100 opacity-0 sm:h-full h-[0] w-[600px]  flex items-center justify-center overflow-hidden overflow-y-hidden gap-4"

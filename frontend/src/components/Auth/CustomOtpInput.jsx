@@ -82,19 +82,16 @@ const CustomOtpInput = () => {
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-3 sm:mt-8 flex flex-col justify-center items-center">
-        <h1 className="text-2xl sm:text-[26px] lg:text-[34px] text-rose-500 font-medium">
-          Verify OTP
-        </h1>
+      <div className="my-5 sm:mt-8 flex flex-col justify-center items-center">
         <form
           onSubmit={handleVerifyAndSignup}
-          className="w-[95%] sm:w-fit mt-3 mb-5 p-5 sm:p-8 bg-white shadow-lg rounded-lg space-y-6"
+          className="w-[85%] sm:w-fit p-5 sm:p-8 bg-white shadow-lg rounded-lg space-y-6"
         >
           <div className="flex justify-center">
             <img
               src="https://img.freepik.com/free-vector/mobile-encryption-concept-illustration_114360-5173.jpg?semt=ais_hybrid"
               alt="Mobile Encryption Illustration"
-              className="w-80 h-72 rounded-lg mb-4"
+              className="w-80 h-72 rounded-lg mb-2"
             />
           </div>
 
@@ -113,8 +110,8 @@ const CustomOtpInput = () => {
                 {...props}
                 className="text-center border border-gray-300 sm:m-[0.5rem] rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
                 style={{
-                  width: isMobile ? "37px" : "40px",
-                  height: isMobile ? "37px" : "40px",
+                  width: isMobile ? "38px" : "40px",
+                  height: isMobile ? "38px" : "40px",
                 }}
               />
             )}
