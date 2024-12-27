@@ -104,7 +104,7 @@ const CustomOtpInput = () => {
             onChange={setOtp}
             numInputs={6}
             separator={<span>-</span>}
-            containerStyle="flex sm:gap-0 gap-2 flex-wrap"
+            containerStyle="flex justify-center sm:gap-0 gap-2 flex-wrap"
             renderInput={(props) => (
               <input
                 {...props}
