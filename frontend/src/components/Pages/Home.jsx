@@ -23,9 +23,9 @@ const Home = () => {
   const { allMovies, isLoading } = useSelector((state) => state.home);
 
   // Tracks if animation has run
-  const movieCardRef = useRef();
-  const anotherRef = useRef();
-  const pinnedContentRef = useRef();
+  // const movieCardRef = useRef();
+  // const anotherRef = useRef();
+  // const pinnedContentRef = useRef();
 
   // useLayoutEffect(() => {
   //   if (movieCardRef.current && anotherRef.current && allMovies.length) {

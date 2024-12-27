@@ -85,7 +85,7 @@ const CustomOtpInput = () => {
       <div className="my-5 sm:mt-8 flex flex-col justify-center items-center">
         <form
           onSubmit={handleVerifyAndSignup}
-          className="w-[85%] sm:w-fit p-5 sm:p-8 bg-white shadow-lg rounded-lg space-y-6"
+          className="w-[90%] sm:w-fit p-5 sm:p-8 bg-white shadow-lg rounded-lg space-y-6"
         >
           <div className="flex justify-center">
             <img
