@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { toast } from "react-hot-toast";
 import { setFormData, updateMovie } from "../../redux/reducer/movieSlice";
 import { fetchMovieApi } from "../../redux/reducer/movieSlice";
 import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 import ChipInput from "./ChipInput";
+import CastField from "./CastField";
 
 const UpdateMoviePage = () => {
   const dispatch = useDispatch();
@@ -28,9 +30,11 @@ const UpdateMoviePage = () => {
           categories: result.payload.categories,
           releaseDate: result.payload.releaseDate,
           summary: result.payload.summary,
-          castMembers: result.payload.castMembers,
+          cast: result.payload.cast,
+          crew: result.payload.crew,
           supportingLanguages: result.payload.supportingLanguages,
-          thumbnailImage: result.payload.thumbnailImage,
+          thumbnailImage: result.payload.thumbnail,
+          bannerImage: result.payload.banner,
           genres: result.payload.genres,
         })
       );
@@ -58,15 +62,19 @@ const UpdateMoviePage = () => {
     dispatch(setFormData({ name: field, value: updatedList }));
   };
 
-  // // Handle file input changes
-  // const handleFileChange = (e) => {
-  //   const { name, files } = e.target;
-  //   dispatch(setFormData({ name, value: files[0] }));
-  // };
-
   // Handle form submission (for updating movie)
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (
+      formData.genres.length === 0 ||
+      formData.supportingLanguages.length === 0 ||
+      formData.cast.length === 0 ||
+      formData.crew.length === 0
+    ) {
+      toast.error("All fields are required");
+      return;
+    }
 
     let movieFormData = { ...formData, movieId: movie_id };
     await dispatch(updateMovie(movieFormData));
@@ -135,9 +143,12 @@ const UpdateMoviePage = () => {
                       value={category}
                       checked={formData.categories.includes(category)}
                       onChange={(e) => handleCheckboxChange(e, "categories")}
-                      className="mr-2"
+                      className="mr-2 cursor-pointer"
                     />
-                    <label htmlFor={category} className="text-sm text-gray-700">
+                    <label
+                      htmlFor={category}
+                      className="text-sm text-gray-700 cursor-pointer"
+                    >
                       {category}
                     </label>
                   </div>
@@ -164,7 +175,7 @@ const UpdateMoviePage = () => {
                 }
                 onChange={handleInputChange}
                 required
-                className="mt-2 block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"
+                className="mt-2 block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2 cursor-pointer"
               />
             </div>
 
@@ -211,9 +222,12 @@ const UpdateMoviePage = () => {
                       value={genre}
                       checked={formData.genres.includes(genre)}
                       onChange={(e) => handleCheckboxChange(e, "genres")}
-                      className="mr-2"
+                      className="mr-2 cursor-pointer"
                     />
-                    <label htmlFor={genre} className="text-sm text-gray-700">
+                    <label
+                      htmlFor={genre}
+                      className="text-sm text-gray-700 cursor-pointer"
+                    >
                       {genre}
                     </label>
                   </div>
@@ -230,22 +244,12 @@ const UpdateMoviePage = () => {
             />
 
             {/* Crew Members */}
-            <div>
-              <label
-                htmlFor="crew"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Crew Members
-              </label>
-              <input
-                type="text"
-                id="crew"
-                name="crew"
-                value={formData.crew || ""}
-                onChange={handleInputChange}
-                className="mt-2 block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"
-              />
-            </div>
+            <CastField
+              label="Crew Members"
+              name="crew"
+              editCrew={true}
+              disabled={loading}
+            />
 
             {/* Supporting Languages */}
             <div>
@@ -269,11 +273,11 @@ const UpdateMoviePage = () => {
                         onChange={(e) =>
                           handleCheckboxChange(e, "supportingLanguages")
                         }
-                        className="mr-2"
+                        className="mr-2 cursor-pointer"
                       />
                       <label
                         htmlFor={supportingLanguage}
-                        className="text-sm text-gray-700"
+                        className="text-sm text-gray-700 cursor-pointer"
                       >
                         {supportingLanguage}
                       </label>

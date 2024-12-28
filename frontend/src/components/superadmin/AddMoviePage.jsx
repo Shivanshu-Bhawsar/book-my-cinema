@@ -6,9 +6,11 @@ import {
   resetFormData,
   addMovie,
 } from "../../redux/reducer/movieSlice";
+import { toast } from "react-hot-toast";
 import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 import ChipInput from "./ChipInput";
+import CastField from "./CastField";
 
 const AddMoviePage = () => {
   const dispatch = useDispatch();
@@ -40,12 +42,13 @@ const AddMoviePage = () => {
     if (
       formData.genres.length === 0 ||
       formData.supportingLanguages.length === 0 ||
-      formData.cast.length === 0
+      formData.cast.length === 0 ||
+      formData.crew.length === 0
     ) {
-      alert("Please select all fields");
+      toast.error("All fields are required");
       return;
     }
-
+    
     // Dispatch the form data to Redux for API submission
     try {
       await dispatch(addMovie(formData));
@@ -120,9 +123,9 @@ const AddMoviePage = () => {
                     value={category}
                     checked={formData.categories.includes(category)}
                     onChange={(e) => handleCheckboxChange(e, "categories")}
-                    className="mr-2"
+                    className="mr-2 cursor-pointer"
                   />
-                  <label htmlFor={category} className="text-sm text-gray-700">
+                  <label htmlFor={category} className="text-sm text-gray-700 cursor-pointer">
                     {category}
                   </label>
                 </div>
@@ -145,7 +148,7 @@ const AddMoviePage = () => {
               value={formData.releaseDate}
               onChange={handleInputChange}
               required
-              className="mt-2 block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"
+              className="mt-2 block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2 cursor-pointer"
             />
           </div>
 
@@ -193,9 +196,9 @@ const AddMoviePage = () => {
                     value={genre}
                     checked={formData.genres.includes(genre)}
                     onChange={(e) => handleCheckboxChange(e, "genres")}
-                    className="mr-2"
+                    className="mr-2 cursor-pointer"
                   />
-                  <label htmlFor={genre} className="text-sm text-gray-700">
+                  <label htmlFor={genre} className="text-sm text-gray-700 cursor-pointer">
                     {genre}
                   </label>
                 </div>
@@ -212,22 +215,12 @@ const AddMoviePage = () => {
           />
 
           {/* Crew Members */}
-          <div>
-            <label
-              htmlFor="crew"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Crew Members
-            </label>
-            <input
-              type="text"
-              id="crew"
-              name="crew"
-              value={formData.crew}
-              onChange={handleInputChange}
-              className="mt-2 block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2"
-            />
-          </div>
+          <CastField
+            label="Crew Members"
+            name="crew"
+            editCrew={false}
+            disabled={loading}
+          />
 
           {/* Supporting Languages */}
           <div>
@@ -251,11 +244,11 @@ const AddMoviePage = () => {
                       onChange={(e) =>
                         handleCheckboxChange(e, "supportingLanguages")
                       }
-                      className="mr-2"
+                      className="mr-2 cursor-pointer"
                     />
                     <label
                       htmlFor={supportingLanguage}
-                      className="text-sm text-gray-700"
+                      className="text-sm text-gray-700 cursor-pointer"
                     >
                       {supportingLanguage}
                     </label>
