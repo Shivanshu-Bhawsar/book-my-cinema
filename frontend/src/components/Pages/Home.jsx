@@ -74,7 +74,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 scrollbar-hide overflow-x-scroll">
       <NavBar />
       <HomeSlider />
       {isLoading ? (
@@ -82,7 +82,7 @@ const Home = () => {
           <div className="custom-loader text-center"></div>
         </div>
       ) : (
-        <div className="sm:overflow-x-hidden mt-8 overflow-y-auto flex flex-col items-start justify-center">
+        <div className="mt-8 flex flex-col items-start justify-center">
           <p className="py-2 px-9 text-lg sm:text-xl font-medium">
             Recommended Movies
           </p>
@@ -102,10 +102,10 @@ const Home = () => {
       )}
       <div className="w-screen h-max sm:p-2 flex mt-5 items-center justify-center">
         <div className="w-[90%] flex flex-col items-start justify-center">
-          <h1 className="text-[rgb(51,51,51)] font-[700] font-[roboto] sm:text-[30px] text-[18px]">
+          <h1 className="mb-2 text-[rgb(51,51,51)] font-[700] font-[roboto] sm:text-[30px] text-[20px]">
             The Best Live Events
           </h1>
-          <div className="w-[100%] h-max flex items-center justify-between overflow-y-auto gap-2">
+          <div className="w-[100%] h-max flex items-center justify-between overflow-x-scroll scrollbar-hide gap-2">
             {liveEventsArray.map((elem, index) => (
               <img
                 src={elem.img}
