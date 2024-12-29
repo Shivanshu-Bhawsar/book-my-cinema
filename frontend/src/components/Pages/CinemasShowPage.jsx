@@ -103,7 +103,9 @@ const CinemasShowPage = () => {
               {consolidateData(cinemas)?.map((cinema, index) => (
                 <div
                   key={index}
-                  className="w-full border-t-[1px] py-4 flex flex-col lg:flex-row gap-5 lg:gap-0"
+                  className={`w-full py-4 flex flex-col lg:flex-row gap-5 lg:gap-0 ${
+                    index != 0 && "border-t-[1px] border-gray-300"
+                  }`}
                 >
                   <div className="lg:w-[45%] text-sm sm:font-medium">
                     <div className="mb-3 w-fit cursor-pointer hover:underline">

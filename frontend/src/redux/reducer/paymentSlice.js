@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AxiosInstance from "../utils/apiConnector";
 import { bookingEndPoints } from "../api";
+import toast from "react-hot-toast";
 
 const { CAPTURE_PAYMENT_API, VERIFICATION_PAYMENT_API, RESERVE_SEATS_API } =
   bookingEndPoints;
@@ -69,7 +70,9 @@ export const verifyPayment = createAsyncThunk(
         VERIFICATION_PAYMENT_API,
         verificationData
       );
-      return response.data; // Return verification data
+
+      toast.success("Payment verified successfully");
+      return response.data;
     } catch (error) {
       if (error.response) {
         return rejectWithValue(

@@ -25,16 +25,13 @@ const TransactionPage = () => {
     dispatch(fetchAllBookings());
   }, [dispatch]);
 
-  if (!bookings || bookings.length === 0)
-    return <p className="text-center text-lg mt-5">No bookings found.</p>;
-
   return (
     <div className="bg-gray-100">
       <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-3 mb-5 flex flex-col justify-center items-center">
+      <div className="my-5 flex flex-col justify-center items-center">
         <h1 className="text-2xl sm:text-[26px] lg:text-[34px] text-rose-500 font-medium">
           Booking History
         </h1>
@@ -43,7 +40,7 @@ const TransactionPage = () => {
             <div className="w-screen h-screen flex items-center justify-center">
               <div className="custom-loader"></div>
             </div>
-          ) : (
+          ) : bookings.length > 0 ? (
             bookings.map((booking) => (
               <div
                 key={booking._id}
@@ -89,6 +86,8 @@ const TransactionPage = () => {
                 </div>
               </div>
             ))
+          ) : (
+            <p className="text-center text-lg mt-5">No bookings found.</p>
           )}
 
           {selectedBooking && (

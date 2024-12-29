@@ -89,8 +89,8 @@ const MoviesPage = () => {
             }}
             className="w-full min-h-[280px] sm:min-h-[320px] md:min-h-[370px] xl:min-h-[500px] mx-auto sm:px-6 md:px-10 xl:px-12 flex items-center bg-no-repeat bg-right-top relative"
           >
-            <div className="w-full h-full mt-2 flex flex-col sm:flex-row sm:gap-8 z-50">
-              <p className="sm:hidden px-5 mb-2 text-2xl font-semibold">
+            <div className="w-full h-full mt-7 flex flex-col sm:flex-row sm:gap-8 z-30">
+              <p className="sm:hidden px-5 mb-3 text-2xl font-medium sm:font-semibold">
                 {movie?.movieName}
               </p>
               <img
@@ -144,7 +144,7 @@ const MoviesPage = () => {
                     onClick={() => {
                       updateMovieHandler(movie_id);
                     }}
-                    className="w-fit mt-3 sm:mt-5 text-sm sm:text-base md:text-lg xl:text-xl px-6 sm:px-8 xl:px-14 py-3 xl:py-[18px] rounded-lg lg:rounded-xl text-white bg-rose-500 font-medium"
+                    className="w-fit mt-2 sm:mt-5 text-sm sm:text-base md:text-lg xl:text-xl px-6 sm:px-8 xl:px-14 py-3 xl:py-[18px] rounded-lg lg:rounded-xl text-white bg-rose-500 font-medium"
                   >
                     Update Movie
                   </button>
@@ -155,7 +155,7 @@ const MoviesPage = () => {
                     onClick={() => {
                       addShowHandler(movie_id);
                     }}
-                    className="w-fit mt-3 sm:mt-5 text-sm sm:text-base md:text-lg xl:text-xl px-6 sm:px-8 xl:px-14 py-3 xl:py-[18px] rounded-lg lg:rounded-xl text-white bg-rose-500 font-medium"
+                    className="w-fit mt-2 sm:mt-5 text-sm sm:text-base md:text-lg xl:text-xl px-6 sm:px-8 xl:px-14 py-3 xl:py-[18px] rounded-lg lg:rounded-xl text-white bg-rose-500 font-medium"
                   >
                     Add Show
                   </button>
@@ -166,7 +166,7 @@ const MoviesPage = () => {
                     onClick={() => {
                       movieBookHandler(movie.movieName, movie._id);
                     }}
-                    className="w-fit mt-3 sm:mt-5 text-sm sm:text-base md:text-lg xl:text-xl px-6 sm:px-8 xl:px-14 py-3 xl:py-[18px] rounded-lg lg:rounded-xl text-white bg-rose-500 font-medium"
+                    className="w-fit mt-2 sm:mt-5 text-sm sm:text-base md:text-lg xl:text-xl px-6 sm:px-8 xl:px-14 py-3 xl:py-[18px] rounded-lg lg:rounded-xl text-white bg-rose-500 font-medium"
                   >
                     Book Tickets
                   </button>
@@ -174,7 +174,7 @@ const MoviesPage = () => {
               </div>
             </div>
           </div>
-          <div className="mx-auto mt-7 sm:mt-10 px-6 md:px-12 lg:px-16 flex flex-col gap-8 sm:gap-12">
+          <div className="mx-auto mt-5 sm:mt-10 px-6 md:px-12 lg:px-16 flex flex-col gap-8 sm:gap-12">
             <div>
               <h4 className="text-xl sm:text-2xl lg:text-[32px] leading-8 font-medium">
                 About the movie

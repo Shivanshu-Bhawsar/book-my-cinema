@@ -87,11 +87,11 @@ const NavBar = () => {
             {/* Navigation menu - visible only on small screens */}
             {menuOpen && (
               <div
-                className={`block md:hidden absolute top-12 left-0 w-full bg-white shadow-md z-10`}
+                className={`block md:hidden absolute top-12 left-0 w-full text-center bg-white shadow-md z-50`}
               >
                 {user?.accountType === "Viewer" && (
                   <div>
-                    <ul className="text-[11px] flex flex-col gap-3 text-[rgb(51,51,51)] p-4">
+                    <ul className="text-xs flex flex-col gap-3 text-[rgb(51,51,51)] p-4">
                       <li onClick={() => setMenuOpen(false)}>
                         <NavLink>ListYourShow</NavLink>
                       </li>
@@ -110,7 +110,7 @@ const NavBar = () => {
 
                 {user?.accountType === "Admin" && (
                   <div>
-                    <ul className="text-[11px] flex flex-col gap-3 text-[rgb(51,51,51)] p-4">
+                    <ul className="text-xs flex flex-col gap-3 text-[rgb(51,51,51)] p-4">
                       <li onClick={() => setMenuOpen(false)}>
                         <NavLink to="/cinema/addCinema">Add Cinema</NavLink>
                       </li>
@@ -128,7 +128,7 @@ const NavBar = () => {
 
                 {user?.accountType === "SuperAdmin" && (
                   <div>
-                    <ul className="text-[11px] flex flex-col gap-3 text-[rgb(51,51,51)] p-4">
+                    <ul className="text-xs flex flex-col gap-3 text-[rgb(51,51,51)] p-4">
                       <li onClick={() => setMenuOpen(false)}>
                         <NavLink to="/movie/addMovie">Add Movie</NavLink>
                       </li>
