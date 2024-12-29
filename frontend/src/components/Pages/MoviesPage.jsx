@@ -89,7 +89,7 @@ const MoviesPage = () => {
             }}
             className="w-full min-h-[280px] sm:min-h-[320px] md:min-h-[370px] xl:min-h-[500px] mx-auto sm:px-6 md:px-10 xl:px-12 flex items-center bg-no-repeat bg-right-top relative"
           >
-            <div className="w-full h-full mt-7 flex flex-col sm:flex-row sm:gap-8 z-30">
+            <div className="w-full h-full mt-5 flex flex-col sm:flex-row sm:gap-8 z-30">
               <p className="sm:hidden px-5 mb-3 text-2xl font-medium sm:font-semibold">
                 {movie?.movieName}
               </p>

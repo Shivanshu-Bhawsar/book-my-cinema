@@ -80,7 +80,7 @@ const CinemasShowPage = () => {
             </div>
           </div>
           <div className="mt-5 h-[60px] border-t-[1px] border-gray-300"></div>
-          <div className="bg-gray-100 px-4 sm:px-8 md:px-10 py-3">
+          <div className="px-4 sm:px-8 md:px-10 py-3">
             <div className="px-5 sm:px-8 py-3 bg-white">
               <div className="hidden mb-2 sm:flex justify-end items-center gap-3">
                 <div className="flex gap-2 items-center">
@@ -103,7 +103,7 @@ const CinemasShowPage = () => {
               {consolidateData(cinemas)?.map((cinema, index) => (
                 <div
                   key={index}
-                  className={`w-full py-4 flex flex-col lg:flex-row gap-5 lg:gap-0 ${
+                  className={`w-full py-4 flex flex-col lg:flex-row gap-3 sm:gap-5 lg:gap-0 ${
                     index != 0 && "border-t-[1px] border-gray-300"
                   }`}
                 >
