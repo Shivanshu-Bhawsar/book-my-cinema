@@ -43,7 +43,7 @@ const LiveYourShow = () => {
             <div className="custom-loader"></div>
           </div>
         ) : (
-          <div className="my-3 sm:my-5 px-5 sm:px-8 py-3 bg-gray-200 rounded-md">
+          <div className="my-3 sm:my-5 px-5 sm:px-8 py-5 flex flex-wrap gap-7 justify-center items-center sm:gap-10 bg-gray-200 rounded-md">
             {shows.length > 0 ? (
               shows?.map((show) => (
                 <div key={show._id} className="w-fit relative">
@@ -60,7 +60,7 @@ const LiveYourShow = () => {
                     {isLoading ? "Updating..." : "Live Show"}
                   </button>
                   <div className="mt-1 flex flex-col items-start justify-center">
-                    <h2 className="sm:text-lg lg:text-xl font-medium">
+                    <h2 className="md:text-lg lg:text-xl font-medium">
                       {show?.movieId?.movieName}
                     </h2>
                     <h2 className="text-xs md:text-sm">

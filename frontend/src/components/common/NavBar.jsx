@@ -67,12 +67,20 @@ const NavBar = () => {
               Log Out
             </button>
           ) : (
-            <NavLink
-              to="/login"
-              className="px-3 sm:px-4 py-1 text-[11px] sm:text-sm font-medium text-center bg-rose-500 text-white border-rose-500 rounded-md border"
-            >
-              Sign in
-            </NavLink>
+            <div className="flex gap-0 sm:gap-4">
+              <NavLink
+                to="/login"
+                className="px-3 sm:px-4 py-1 text-[11px] sm:text-sm font-medium text-center bg-rose-500 text-white border-rose-500 rounded-md border"
+              >
+                Sign in
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className="hidden sm:block px-3 sm:px-4 py-1 text-[11px] sm:text-sm font-medium text-center bg-rose-500 text-white border-rose-500 rounded-md border"
+              >
+                Sign up
+              </NavLink>
+            </div>
           )}
 
           <div>
