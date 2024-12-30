@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getAllMoviesApi } from "../../redux/reducer/homeSlice";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 import MovieCard from "../common/MovieCard";
 import Footer from "../common/Footer";
@@ -75,7 +74,6 @@ const Home = () => {
 
   return (
     <div className="bg-gray-100 scrollbar-hide overflow-x-scroll">
-      <NavBar />
       <HomeSlider />
       {isLoading ? (
         <div className="flex items-center justify-center w-screen h-[400px]">
@@ -83,7 +81,7 @@ const Home = () => {
         </div>
       ) : (
         <div className="mt-8 flex flex-col items-start justify-center">
-          <p className="py-2 px-9 text-lg sm:text-xl font-medium">
+          <p className="py-2 px-9 text-lg sm:text-xl font-medium md:font-semibold">
             Recommended Movies
           </p>
           <div

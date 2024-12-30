@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import NavBar from "../common/NavBar";
 import MovieCard from "../common/MovieCard";
 import HomeSlider from "../common/HomeSlider";
 import { getAllMoviesApi } from "../../redux/reducer/homeSlice";
@@ -74,12 +73,11 @@ const MoviesPage = () => {
 
   return (
     <div>
+      <div className="hidden md:block">
+        <HomeSlider isShow={false} />
+      </div>
       {movie ? (
         <>
-          <NavBar />
-          <div className="hidden md:block">
-            <HomeSlider isShow={false} />
-          </div>
           <div
             style={{
               backgroundImage: isMobile
@@ -255,10 +253,7 @@ const MoviesPage = () => {
           </div>
         </>
       ) : (
-        <div>
-          <NavBar />
-          <div className="text-2xl text-center mt-14">Movie not found</div>
-        </div>
+        <div className="text-2xl text-center mt-14">Movie not found</div>
       )}
     </div>
   );

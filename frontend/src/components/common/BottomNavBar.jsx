@@ -6,7 +6,9 @@ import { IoPersonSharp } from "react-icons/io5";
 import { ImHome } from "react-icons/im";
 
 const BottomNavBar = () => {
-  const logo = require("../../utils/png-clipart-bookmyshow-office-android-ticket-android-text-logo-removebg-preview.png");
+  // const logo = require("../../utils/png-clipart-bookmyshow-office-android-ticket-android-text-logo-removebg-preview.png");
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <div
       style={{
@@ -18,7 +20,7 @@ const BottomNavBar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-[rgb(220,53,75)]" : "text-black"
+            isActive ? "text-rose-500" : "text-black"
           }
         >
           <li>
@@ -31,7 +33,7 @@ const BottomNavBar = () => {
         <NavLink
           to="/movies"
           className={({ isActive }) =>
-            isActive ? "text-[rgb(220,53,75)]" : "text-black"
+            isActive ? "text-rose-500" : "text-black"
           }
         >
           <li className="flex flex-col items-center justify-center">
@@ -40,20 +42,20 @@ const BottomNavBar = () => {
           </li>
         </NavLink>
         <NavLink
-          to="/live-events"
+          to={user ? "/book/transactions" : "/login"}
           className={({ isActive }) =>
-            isActive ? "text-[rgb(220,53,75)]" : "text-black"
+            isActive ? "text-rose-500" : "text-black"
           }
         >
           <li className="flex flex-col items-center justify-center">
             <BsFillTicketPerforatedFill className="w-[30px] h-[20px]" />
-            <p>Live Events</p>
+            <p>Your Tickets</p>
           </li>
         </NavLink>
         <NavLink
           to="/profile"
           className={({ isActive }) =>
-            isActive ? "text-[rgb(220,53,75)]" : "text-black"
+            isActive ? "text-rose-500" : "text-black"
           }
         >
           <li className="flex flex-col items-center justify-center">

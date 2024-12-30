@@ -14,15 +14,9 @@ const NavBar = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const logo = require("../../utils/png-clipart-bookmyshow-office-android-ticket-android-text-logo-removebg-preview.png");
+  const menuBarRef = useRef(null);
 
-  useEffect(() => {
-    if (token) {
-      setIsLogedIn(true);
-    } else {
-      setIsLogedIn(false);
-    }
-  }, []);
+  const logo = require("../../utils/png-clipart-bookmyshow-office-android-ticket-android-text-logo-removebg-preview.png");
 
   const logoutClickHandler = () => {
     localStorage.clear();
@@ -31,6 +25,29 @@ const NavBar = () => {
     navigate("/");
     toast.success("Logout Successfully");
   };
+
+  // Close menubar if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuBarRef.current && !menuBarRef.current.contains(event.target)) {
+        console.log("kii");
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup listener on unmount
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      setIsLogedIn(true);
+    } else {
+      setIsLogedIn(false);
+    }
+  }, [token]);
 
   return (
     <div className="w-full bg-white flex items-start justify-center py-3 px-3 sm:px-5 md:px-7">
@@ -83,7 +100,7 @@ const NavBar = () => {
             </div>
           )}
 
-          <div>
+          <div ref={menuBarRef}>
             {/* Hamburger menu toggle for small screens */}
             <span
               onClick={() => setMenuOpen(!menuOpen)}

@@ -113,7 +113,7 @@ const HomeSlider = ({ isShow = true }) => {
             className="text-[11px] sm:text-xs lg:text-sm flex flex-wrap gap-3 lg:gap-5 text-[rgb(51,51,51)]"
           >
             <li>
-              <NavLink>Movies</NavLink>
+              <NavLink to="/movies">Movies</NavLink>
             </li>
             <li>
               <NavLink>Streams</NavLink>

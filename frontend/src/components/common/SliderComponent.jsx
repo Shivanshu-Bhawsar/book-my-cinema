@@ -21,7 +21,7 @@ export default function App() {
       // Trigger autoplay when video is active
       const videoSrc = sliderArray[activeIndex].vedioSrc.split("?")[0];
       videoIframe.src = `${videoSrc}?${
-        isVideoPlaying ? "autoplay=1" : "autoplay=0"
+        isVideoPlaying ? "autoplay=0" : "autoplay=1"
       }&controls=0&modestbranding=1&rel=0&showinfo=0`;
     }
   }, [activeIndex, isVideoPlaying]);

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import OtpInput from "react-otp-input";
 import { signUpApi } from "../../redux/reducer/authSlice";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 
 const CustomOtpInput = () => {
@@ -78,7 +77,6 @@ const CustomOtpInput = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

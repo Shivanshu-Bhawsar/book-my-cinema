@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { updateScreen } from "../../redux/reducer/adminSlice";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 
 const UpdateScreen = () => {
@@ -56,7 +55,6 @@ const UpdateScreen = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

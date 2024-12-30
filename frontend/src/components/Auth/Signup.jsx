@@ -6,7 +6,6 @@ import { sendOtpApi, setSignupData } from "../../redux/reducer/authSlice";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineUser, AiOutlineMail, AiOutlineLock } from "react-icons/ai";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 
 const Signup = () => {
@@ -71,7 +70,6 @@ const Signup = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

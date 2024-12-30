@@ -30,8 +30,14 @@
 }
 
 .custom-bg-image {
-  background-image: linear-gradient(90deg, rgb(26, 26, 26) 24.97%, rgb(26, 26, 26) 38.3%, rgba(26, 26, 26, 0.04) 97.47%, rgb(26, 26, 26) 100%),
-    url('https://assets-in.bmscdn.com/iedb/movies/images/mobile/listing/xxlarge/bhool-bhulaiyaa-3-et00353996-1728474428.jpg');
+  background-image: linear-gradient(
+      90deg,
+      rgb(26, 26, 26) 24.97%,
+      rgb(26, 26, 26) 38.3%,
+      rgba(26, 26, 26, 0.04) 97.47%,
+      rgb(26, 26, 26) 100%
+    ),
+    url("https://assets-in.bmscdn.com/iedb/movies/images/mobile/listing/xxlarge/bhool-bhulaiyaa-3-et00353996-1728474428.jpg");
 }
 
 @media (max-width: 640px) {
@@ -42,13 +48,13 @@
 
 @media (max-width: 640px) {
   .home-banner-height {
-    height: 155px
+    height: 155px;
   }
 }
 
 @media (max-width: 500px) {
   .home-banner-height {
-    height: 135px
+    height: 135px;
   }
 }
 
@@ -58,7 +64,6 @@
   line-height: 0.78em;
   outline: none;
   animation: animate 5s linear infinite;
-  /* Added 'infinite' for continuous animation */
 }
 
 @keyframes animate {
@@ -78,21 +83,15 @@
   92.1%,
   100% {
     color: #fff;
-    text-shadow:
-      0 0 10px #03bcf4,
-      0 0 20px #03bcf4,
-      0 0 40px #03bcf4,
-      0 0 80px #03bcf4,
-      0 0 160px #03bcf4;
+    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
+      0 0 80px #03bcf4, 0 0 160px #03bcf4;
   }
 }
-
 
 /* For the swiper container */
 .swiper-container {
   width: 100%;
   height: 300px;
-  /* Set a fixed height for the slider */
 }
 
 /* Style for each slider item */
@@ -111,7 +110,6 @@
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.5s ease;
-  /* Smooth animation */
 }
 
 /* Hover effect for images */
@@ -128,5 +126,11 @@
 
 .swiper-pagination-bullet-active {
   background-color: #ff6347;
-  /* Active bullet color */
+}
+
+.custom-text {
+  -webkit-text-stroke: 2px rgb(37, 49, 126);
+  color: transparent;
+  font-weight: bold;
+  padding: 10px;
 }

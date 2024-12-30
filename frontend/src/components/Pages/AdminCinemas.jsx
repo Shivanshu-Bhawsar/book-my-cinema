@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAdminCinemas } from "../../redux/reducer/adminSlice";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 
 const AdminCinemas = () => {
@@ -23,7 +22,6 @@ const AdminCinemas = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

@@ -5,7 +5,6 @@ import { useMediaQuery } from "react-responsive";
 import { toast } from "react-hot-toast";
 import { setFormData, updateMovie } from "../../redux/reducer/movieSlice";
 import { fetchMovieApi } from "../../redux/reducer/movieSlice";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 import ChipInput from "./ChipInput";
 import CastField from "./CastField";
@@ -87,7 +86,6 @@ const UpdateMoviePage = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

@@ -3,6 +3,7 @@ import "./index.css";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import NavBar from "./components/common/NavBar";
 import Home from "./components/Pages/Home";
 import MoviesPage from "./components/Pages/MoviesPage";
 import Signup from "./components/Auth/Signup";
@@ -22,10 +23,10 @@ import LiveYourShow from "./components/Pages/LiveYourShow";
 import CinemasShowPage from "./components/Pages/CinemasShowPage";
 import TermsAndCounditionPage from "./components/Pages/TermsAndCounditionPage";
 import TransactionPage from "./components/Pages/TransactionPage";
-import LoaderPage from "./utils/LoaderPage";
-import ScrollTop from "./utils/ScrollTop";
-import BottomNavBar from "./components/common/BottomNavBar";
 import PageNotFound from "./components/Pages/PageNotFound";
+import AllMoviesPage from "./components/Pages/AllMoviesPage";
+import ScrollTop from "./utils/ScrollTop";
+import LoaderPage from "./utils/LoaderPage";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,9 @@ function App() {
     <div className="w-full flex flex-col bg-richblack-900 font-inter">
       <Toaster position="top-center" />
       <ScrollTop />
+
+      <NavBar />
+
       <Routes>
         {/* Open Routes */}
         <Route path="/" element={<Home />} />
@@ -66,6 +70,7 @@ function App() {
           path="/shows/:movieName/:movie_id"
           element={<CinemasShowPage />}
         />
+        <Route path="/movies" element={<AllMoviesPage />} />
 
         {/* Super-Admin Routes */}
         <Route

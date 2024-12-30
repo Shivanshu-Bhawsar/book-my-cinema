@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { liveYourShow, getUnliveShows } from "../../redux/reducer/adminSlice";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 import MovieCard from "../common/MovieCard";
 
@@ -30,7 +29,6 @@ const LiveYourShow = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

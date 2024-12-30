@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { addCinema, getCities } from "../../redux/reducer/adminSlice";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 
 const AddCinema = () => {
@@ -47,7 +46,6 @@ const AddCinema = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

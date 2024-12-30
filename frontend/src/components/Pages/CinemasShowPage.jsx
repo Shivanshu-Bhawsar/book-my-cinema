@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import NavBar from "../common/NavBar";
-import HomeSlider from "../common/HomeSlider";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchShowDetailes } from "../../redux/reducer/showSlice";
+import HomeSlider from "../common/HomeSlider";
 
 const CinemasShowPage = () => {
   const navigate = useNavigate();
@@ -49,7 +48,6 @@ const CinemasShowPage = () => {
 
   return (
     <div>
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

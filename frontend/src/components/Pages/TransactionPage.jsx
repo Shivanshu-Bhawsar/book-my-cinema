@@ -2,19 +2,33 @@ import React, { useEffect, useState } from "react";
 import TicketBox from "../common/TicketBox";
 import { fetchAllBookings } from "../../redux/reducer/bookingSlice";
 import { useDispatch, useSelector } from "react-redux";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
+import { MdOutlineCurrencyRupee } from "react-icons/md";
 
 const TransactionPage = () => {
   const dispatch = useDispatch();
   const { bookings, loading } = useSelector((state) => state.book);
   const [selectedBooking, setSelectedBooking] = useState(null);
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    if (isNaN(date)) return "Invalid Date";
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return date.toLocaleDateString("en-US", options);
+  const formatDate = (isoDateString, timing, show) => {
+    const date = new Date(isoDateString);
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", { month: "short" });
+    const year = date.getFullYear();
+
+    const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+    const weekday = weekdays[date.getDay()];
+
+    // Extract the hour and the period (am/pm) from the timing parameter
+    const [startHour, period] = timing.split(/[-]+/);
+
+    // Determine if the period is AM or PM
+    const ampm = period.toLowerCase().includes("pm") ? "PM" : "AM";
+
+    // Parse the start hour to an integer and format it to 12-hour format if necessary
+    const formattedHour = parseInt(startHour) % 12 || 12;
+
+    return `${weekday},  ${day} ${month} ${year} | ${formattedHour} ${ampm}`;
   };
 
   const ticketClickHandler = (booking) => {
@@ -27,7 +41,6 @@ const TransactionPage = () => {
 
   return (
     <div className="bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
@@ -35,60 +48,52 @@ const TransactionPage = () => {
         <h1 className="text-2xl sm:text-[26px] lg:text-[34px] text-rose-500 font-medium">
           Booking History
         </h1>
-        <div className="mt-5 px-5 sm:px-7 flex flex-wrap justify-center items-center gap-5 sm:gap-7">
-          {loading ? (
-            <div className="w-screen h-screen flex items-center justify-center">
-              <div className="custom-loader"></div>
-            </div>
-          ) : bookings.length > 0 ? (
-            bookings.map((booking) => (
-              <div
-                key={booking._id}
-                className="bg-white p-5 rounded-lg shadow-lg"
-              >
-                <div className="flex flex-col gap-2">
-                  <p className="text-sm md:text-base font-semibold text-gray-800">
-                    Booking ID:{" "}
-                    <span className="text-gray-600 font-medium">
-                      {booking._id}
-                    </span>
-                  </p>
-                  {booking?.showId && (
-                    <>
-                      <p className="text-xs sm:text-sm font-semibold text-gray-700">
-                        Movie:{" "}
-                        <span className="text-blue-600 font-medium">
-                          {booking.showId.movieId?.movieName || "N/A"}
-                        </span>
-                      </p>
-                      <p className="text-xs sm:text-sm font-semibold text-gray-700">
-                        Release Date:{" "}
-                        <span className="text-gray-500 font-medium">
-                          {booking.showId.movieId?.releaseDate
-                            ? formatDate(booking.showId.movieId.releaseDate)
-                            : "N/A"}
-                        </span>
-                      </p>
-                      <p className="text-xs sm:text-sm font-semibold text-gray-700">
-                        Cinema:{" "}
-                        <span className="text-blue-600 font-medium">
-                          {booking.showId.cinemaId?.cinemaName || "N/A"}
-                        </span>
-                      </p>
-                    </>
-                  )}
+        <div className="w-screen sm:w-[72%] md:w-[60%] mt-3 sm:mt-5 px-5 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
+          {bookings.map((booking) => (
+            <div
+              key={booking._id}
+              className="bg-white w-full rounded-md sm:shadow-lg border-b-2 space-y-4 cursor-pointer"
+              onClick={() => ticketClickHandler(booking)}
+            >
+              <div className="w-full p-3 flex items-center justify-start gap-5">
+                <div>
+                  <img
+                    src={booking.showId.movieId.thumbnail}
+                    className="w-[60px] h-[60px] object-cover rounded-md"
+                  />
+                </div>
+                <div className="flex flex-col items-start justify-center">
+                  <h2 className="sm:text-[15px] text-[12px] font-[600] font-sans">
+                    {booking.showId.movieId.movieName}
+                  </h2>
+                  <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs hidden sm:block">{`${formatDate(
+                    booking.showId.showStart,
+                    booking.showId.timing,
+                    booking.showId.showEnd
+                  )} | ${booking.bookedSeats.length} Ticket`}</p>
+                  <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${formatDate(
+                    booking.showId.showStart,
+                    booking.showId.timing,
+                    booking.showId.showEnd
+                  )}`}</p>
+                  <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${booking.bookedSeats.length} Ticket`}</p>
+                  <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs capitalize">{`${booking.showId.cinemaId.cinemaName}, ${booking.showId.cinemaId.cityId.cityName}`}</p>
+                </div>
+                {/* Flex container for the button */}
+                <div className="ml-auto">
                   <button
                     onClick={() => ticketClickHandler(booking)}
-                    className="w-fit mt-2 px-5 py-2 rounded-lg bg-rose-500 text-white"
+                    className="w-fit mt-3 px-5 py-2 rounded-lg text-[rgb(139,139,139)] text-[40px] font-[300]"
                   >
-                    View Ticket
+                    <p className="text-[15px] text-red-600 flex items-center justify-center h-full">
+                      <MdOutlineCurrencyRupee />
+                      {`${booking.totalAmount / 100}`}
+                    </p>
                   </button>
                 </div>
               </div>
-            ))
-          ) : (
-            <p className="text-center text-lg mt-5">No bookings found.</p>
-          )}
+            </div>
+          ))}
 
           {selectedBooking && (
             <TicketBox

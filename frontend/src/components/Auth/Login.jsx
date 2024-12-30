@@ -7,7 +7,6 @@ import { loginApi } from "../../redux/reducer/authSlice";
 import { FcGoogle } from "react-icons/fc";
 import { SiApple } from "react-icons/si";
 import { FaTwitter } from "react-icons/fa";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 
 const Login = () => {
@@ -55,7 +54,6 @@ const Login = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchSeatsDetailes } from "../../redux/reducer/seatSlice";
+import HomeSlider from "../common/HomeSlider";
 import VipSeat from "../seatComponents/VipSeat";
 import BolconySeat from "../seatComponents/BalconySeat";
 import RegularSeat from "../seatComponents/RegularSeat";
@@ -12,8 +13,6 @@ import {
 } from "../../redux/reducer/paymentSlice";
 import { io } from "socket.io-client";
 import AxiosInstance from "../../redux/utils/apiConnector";
-import HomeSlider from "../common/HomeSlider";
-import NavBar from "../common/NavBar";
 
 const socket = io("https://movie-book-app-backend.onrender.com", {
   withCredentials: true,
@@ -32,6 +31,7 @@ const ShowSeats = () => {
   const [balconySeat, setBalconySeat] = useState([]);
   const [vipSeat, setVipSeat] = useState([]);
   const [mySeats, setMySeats] = useState([]);
+  const [amount, setAmount] = useState(0);
 
   const formatDate = (isoDateString, timing, show) => {
     const date = new Date(isoDateString);
@@ -41,8 +41,6 @@ const ShowSeats = () => {
 
     // Extract the hour and the period (am/pm) from the timing parameter
     const [startHour, period] = timing.split(/[-]+/);
-    console.log("startHour", startHour, "period", period);
-    console.log("end", parseInt(period));
 
     // Determine if the period is AM or PM
     const ampm = period.toLowerCase().includes("pm") ? "PM" : "AM";
@@ -124,6 +122,14 @@ const ShowSeats = () => {
 
   // Handle seat click
   const toggleSeatSelection = (seat) => {
+    if (mySeats.some((seatObj) => seatObj._id === seat._id)) {
+      let newAmount = amount - seat.seatId.seatPrice;
+      setAmount(newAmount);
+    } else {
+      let newAmount = amount + seat.seatId.seatPrice;
+      setAmount(newAmount);
+    }
+
     setMySeats(
       (prevSeats) =>
         prevSeats.some((selectedSeat) => selectedSeat._id === seat._id)
@@ -240,7 +246,6 @@ const ShowSeats = () => {
 
   return (
     <div className="bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
@@ -255,7 +260,15 @@ const ShowSeats = () => {
               <div className="text-center">No Show Found</div>
             ) : (
               <div className="my-5">
-                <div className="w-screen flex flex-col items-center justify-start gap-2 p-4">
+                {/* <div className="w-screen flex flex-col items-center justify-start gap-2 p-4">
+                  <div className="flex items-center justify-center gap-3 flex-wrap">
+                    <div>{seatArray[0]?.cinemaId?.cinemaName} : </div>
+                    <div>{seatArray[0]?.cinemaId?.cityId?.cityName} |</div>
+                    <div>{formatDate(seatArray[0]?.showStart)}</div>
+                  </div>
+                </div> */}
+
+                <div className="w-full flex flex-col items-center justify-start gap-2 p-4">
                   <div className="flex items-center justify-start gap-3">
                     <div>{seatArray[0]?.cinemaId?.cinemaName}</div>
                     <span>|</span>
@@ -284,17 +297,17 @@ const ShowSeats = () => {
                   </div>
                 </div>
 
-                <div className="w-screen border-[1px] bg-[rgb(246,245,250)] h-[30px]"></div>
+                <div className="w-full border-[1px] bg-[rgb(246,245,250)] h-[30px]"></div>
 
-                <div className="w-screen max-h-max bg-[rgb(250,250,250)] flex items-center justify-center flex-col gap-4">
+                <div className="w-full min-h-[60%] bg-[rgb(250,250,250)] flex items-center justify-center flex-col gap-4">
                   {/* VIP Seats */}
                   <div className="w-[50%] flex items-center justify-center gap-2 p-2">
                     {vipSeat.length !== 0 && (
                       <div className="w-full flex items-center justify-center flex-col">
-                        <div className="w-[80%] sm:text-left text-center border-b-[0.5px] border-b-[rgb(237,237,237)]">
+                        <div className="w-[100%] sm:w-[80%] text-left text-[10px] sm:text-xs border-b-[0.5px] border-b-[rgb(237,237,237)]">
                           {`Rs. ${vipSeat[0].seatId.seatPrice} VIP / LUXURY`}
                         </div>
-                        <div className="grid grid-cols-5 gap-4 my-5">
+                        <div className="grid grid-cols-5 gap-4 my-3 sm:my-5">
                           {vipSeat.map((vip) => (
                             <VipSeat
                               vip={vip}
@@ -316,12 +329,12 @@ const ShowSeats = () => {
                   <div className="w-[50%] flex items-center justify-center gap-2 p-2">
                     {balconySeat.length !== 0 && (
                       <div className="w-full flex items-center justify-center flex-col">
-                        <div className="w-[80%] sm:text-left text-center border-b-[0.5px] border-b-[rgb(237,237,237)]">
+                        <div className="w-[100%] sm:w-[80%] text-left text-[10px] sm:text-xs border-b-[0.5px] border-b-[rgb(237,237,237)]">
                           {`Rs. ${
                             balconySeat[0].seatId?.seatPrice || "N/A"
                           } BALCONY`}
                         </div>
-                        <div className="grid grid-cols-5 gap-4 my-5">
+                        <div className="grid grid-cols-5 gap-4 my-3 sm:my-5">
                           {balconySeat.map((balcony) => (
                             <BolconySeat
                               balcony={balcony}
@@ -343,12 +356,12 @@ const ShowSeats = () => {
                   <div className="w-[50%] flex items-center justify-center gap-2 p-2">
                     {regularSeat.length !== 0 && (
                       <div className="w-full flex items-center justify-center flex-col">
-                        <div className="w-[80%] sm:text-left text-center border-b-[0.5px] border-b-[rgb(237,237,237)]">
+                        <div className="w-[100%] sm:w-[80%] text-left text-[10px] sm:text-xs border-b-[0.5px] border-b-[rgb(237,237,237)]">
                           {`Rs. ${
                             regularSeat[0].seatId?.seatPrice || "N/A"
                           } REGULAR`}
                         </div>
-                        <div className="grid grid-cols-5 gap-4 my-5">
+                        <div className="grid grid-cols-5 gap-4 my-3 sm:my-5">
                           {regularSeat.map((regular) => (
                             <RegularSeat
                               regular={regular}
@@ -365,16 +378,34 @@ const ShowSeats = () => {
                       </div>
                     )}
                   </div>
+                  <div class="w-[60%] h-[2px] mx-auto bg-gradient-to-r from-transparent via-black to-transparent rounded-full"></div>
+
+                  <div className="w-screen flex items-center h-[30px] p-5 sm:gap-10 gap-4 justify-center">
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="sm:w-[20px] sm:h-[20px] w-[14px] h-[14px] border border-[#1ea83c] text-[#1ea83c] rounded-sm"></div>
+                      <p>Available</p>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="sm:w-[20px] sm:h-[20px] w-[14px] h-[14px] bg-purple-500 rounded-sm"></div>
+                      <p>Selected</p>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="sm:w-[20px] sm:h-[20px] w-[14px] h-[14px] bg-rose-500 rounded-sm"></div>
+                      <p>Booked</p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="text-center my-5">
-                  <button
-                    className="bg-rose-500 hover:bg-rose-600 text-white px-5 py-2 rounded"
-                    onClick={handleBookNow}
-                    disabled={mySeats.length === 0 || loading}
-                  >
-                    Book Now
-                  </button>
+                  {mySeats.length !== 0 && (
+                    <button
+                      className="bg-rose-500 hover:bg-rose-600 text-white px-10 sm:px-20 py-2 rounded"
+                      onClick={handleBookNow}
+                      disabled={mySeats.length === 0 || loading}
+                    >
+                      {`Pay Rs.${amount}`}
+                    </button>
+                  )}
                 </div>
               </div>
             )}

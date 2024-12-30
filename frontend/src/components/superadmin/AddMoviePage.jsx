@@ -7,7 +7,6 @@ import {
   addMovie,
 } from "../../redux/reducer/movieSlice";
 import { toast } from "react-hot-toast";
-import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
 import ChipInput from "./ChipInput";
 import CastField from "./CastField";
@@ -72,7 +71,6 @@ const AddMoviePage = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <NavBar />
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
