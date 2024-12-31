@@ -244,7 +244,7 @@ const MoviesPage = () => {
                   View All
                 </Link>
               </div>
-              <div className="mt-5 sm:mt-7 flex gap-5 md:gap-8 overflow-x-scroll scrollbar-hide bg-[rgb(245,245,245)]">
+              <div className="mt-5 mb-5 sm:mb-0 sm:mt-7 flex gap-5 md:gap-8 overflow-x-scroll scrollbar-hide">
                 {recommendedArray?.slice(0, 6)?.map((recommmovie) => (
                   <MovieCard movie={recommmovie} key={recommmovie._id} />
                 ))}

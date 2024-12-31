@@ -8,7 +8,6 @@ import MovieCard from "../common/MovieCard";
 import Footer from "../common/Footer";
 import SliderComponent from "../common/SliderComponent";
 import PremiereComponent from "../common/PremiereComponent";
-import BottomNavBar from "../common/BottomNavBar";
 import EventComponent from "../common/EventComponent";
 import liveEventsArray from "../../utils/sliderTwoPcitures";
 import gifVedio from "../../utils/GifVedio.mp4";
@@ -135,8 +134,6 @@ const Home = () => {
       <EventComponent />
 
       <Footer />
-
-      <BottomNavBar />
     </div>
   );
 };

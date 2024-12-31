@@ -27,6 +27,7 @@ import PageNotFound from "./components/Pages/PageNotFound";
 import AllMoviesPage from "./components/Pages/AllMoviesPage";
 import ScrollTop from "./utils/ScrollTop";
 import LoaderPage from "./utils/LoaderPage";
+import BottomNavBar from "./components/common/BottomNavBar";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -141,6 +142,8 @@ function App() {
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+
+      <div className="mt-12"><BottomNavBar /></div>
     </div>
   );
 }

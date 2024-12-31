@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Footer = () => {
   const logo = require("../../utils/png-clipart-bookmyshow-office-android-ticket-android-text-logo-removebg-preview.png");
   return (
-    <div className="w-screen sm:pl-16 sm:pr-16 h-max mb-[50px] sm:mb-0 bg-[rgb(52,51,56)] text-[rgb(118,120,119)]">
+    <div className="w-screen overflow-hidden sm:pl-16 sm:pr-16 h-max bg-[rgb(52,51,56)] text-[rgb(118,120,119)]">
       {/* Partner Section */}
       <div className="w-full h-max flex items-center justify-between gap-3 mb-3 p-4">
         <div className="sm:text-left text-center font-[600] sm:text-[18px] text-[12px] font-sans text-white">

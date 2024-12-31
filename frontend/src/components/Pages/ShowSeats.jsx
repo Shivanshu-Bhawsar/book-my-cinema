@@ -260,15 +260,26 @@ const ShowSeats = () => {
               <div className="text-center">No Show Found</div>
             ) : (
               <div className="my-5">
-                {/* <div className="w-screen flex flex-col items-center justify-start gap-2 p-4">
-                  <div className="flex items-center justify-center gap-3 flex-wrap">
-                    <div>{seatArray[0]?.cinemaId?.cinemaName} : </div>
-                    <div>{seatArray[0]?.cinemaId?.cityId?.cityName} |</div>
-                    <div>{formatDate(seatArray[0]?.showStart)}</div>
-                  </div>
-                </div> */}
-
                 <div className="w-full flex flex-col items-center justify-start gap-2 p-4">
+                  <div className="flex items-center justify-start gap-3">
+                    <div>{seatArray[0]?.cinemaId?.cinemaName}</div>
+                    <span>|</span>
+                    <div className="capitalize">
+                      {seatArray[0]?.cinemaId?.cityId?.cityName}
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-start gap-3">
+                    <div>
+                      {formatDate(
+                        seatArray[0]?.showStart,
+                        seatArray[0]?.timing,
+                        "start"
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* <div className="w-full flex flex-col items-center justify-start gap-2 p-4">
                   <div className="flex items-center justify-start gap-3">
                     <div>{seatArray[0]?.cinemaId?.cinemaName}</div>
                     <span>|</span>
@@ -295,7 +306,7 @@ const ShowSeats = () => {
                       )}
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="w-full border-[1px] bg-[rgb(246,245,250)] h-[30px]"></div>
 
