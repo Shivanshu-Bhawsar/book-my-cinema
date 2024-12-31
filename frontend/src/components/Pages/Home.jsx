@@ -79,14 +79,11 @@ const Home = () => {
           <div className="custom-loader text-center"></div>
         </div>
       ) : (
-        <div className="mt-8 flex flex-col items-start justify-center">
-          <p className="py-2 px-9 text-lg sm:text-xl font-medium md:font-semibold">
+        <div className="mt-8 sm:mt-12 flex flex-col items-start justify-center">
+          <p className="py-2 px-8 text-lg sm:text-xl font-medium md:font-semibold">
             Recommended Movies
           </p>
-          <div
-            className="w-full flex gap-5 p-3 mb-5 flex-wrap items-center justify-center
-          "
-          >
+          <div className="w-full px-2 mt-3 mb-5 flex gap-5 flex-wrap items-start justify-center">
             {allMovies.length ? (
               allMovies.map((movie) => (
                 <MovieCard movie={movie} key={movie._id} />
@@ -113,19 +110,19 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="w-screen h-auto sm:h-[0] flex items-center justify-center p-2 mt-3 sm:opacity-0 opacity-100">
+      <div className="w-full sm:h-0 p-2 mt-3 sm:opacity-0 opacity-100">
         <img src={offerBanner}></img>
       </div>
       <div className="w-screen h-max p-18 mt-5 mb-0 sm:mb-5">
-        <SliderComponent></SliderComponent>
+        <SliderComponent />
       </div>
-      <div className="w-[100vw] bg-white">
+      <div className="w-[100vw] my-2 bg-white">
         <video
           src={gifVedio}
           autoPlay
           loop
           muted
-          className="w-full h-[150px] sm:h-0 opacity-100 sm:opacity-0 pointer-events-none"
+          className="w-full sm:h-0 opacity-100 sm:opacity-0 pointer-events-none"
         ></video>
       </div>
 

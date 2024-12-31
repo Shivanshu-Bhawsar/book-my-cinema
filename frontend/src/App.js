@@ -143,7 +143,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
-      <div className="mt-12"><BottomNavBar /></div>
+      <div className="block sm:hidden mt-12 sm:mt-0"><BottomNavBar /></div>
     </div>
   );
 }

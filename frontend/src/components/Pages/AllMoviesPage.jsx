@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
 import MovieCard from "../common/MovieCard";
 import { getAllMoviesApi } from "../../redux/reducer/homeSlice";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import filterData from "../../utils/FilterData";
 import HomeSlider from "../common/HomeSlider";
+import liveEventsArray from "../../utils/sliderTwoPcitures";
+import Footer from "../common/Footer";
 
 const AllMoviesPage = () => {
   const dispatch = useDispatch();
@@ -93,6 +94,7 @@ const AllMoviesPage = () => {
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
+
       {isLoading ? (
         <div className="w-screen h-screen flex items-center justify-center">
           <div className="custom-loader"></div>
@@ -214,8 +216,8 @@ const AllMoviesPage = () => {
           </div>
 
           {/* Movies Section */}
-          <div className="w-full mt-3 p-5 flex flex-col items-start justify-center">
-            <div className="w-full mb-4 px-5 flex items-center justify-between">
+          <div className="w-full mt-3 flex flex-col items-start justify-center">
+            <div className="w-full mb-4 px-8 flex items-center justify-between">
               <button
                 className="px-5 sm:px-6 py-[6px] tracking-wider text-sm flex items-center justify-center bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-md"
                 onClick={toggleFilter}
@@ -227,7 +229,7 @@ const AllMoviesPage = () => {
               </p>
             </div>
 
-            <div className="w-full p-3 mb-5 flex gap-5 flex-wrap items-center justify-center">
+            <div className="w-[90%] mx-auto flex gap-5 p-3 mb-5 flex-wrap items-center justify-between">
               {filterMovies.length ? (
                 filterMovies.map((movie) => (
                   <MovieCard movie={movie} key={movie._id} />
@@ -239,6 +241,25 @@ const AllMoviesPage = () => {
           </div>
         </div>
       )}
+
+      <div className="w-screen h-max mb-5 sm:p-2 flex mt-5 items-center justify-center">
+        <div className="w-[90%] flex flex-col items-start justify-center">
+          <h1 className="mb-2 text-[rgb(51,51,51)] font-[700] font-[roboto] sm:text-[30px] text-[20px]">
+            The Best Live Events
+          </h1>
+          <div className="w-[100%] h-max flex items-center justify-between overflow-x-scroll scrollbar-hide gap-2">
+            {liveEventsArray.map((elem, index) => (
+              <img
+                src={elem.img}
+                className="sm:w-[230px] sm:h-[230px] rounded-md w-[150px]"
+                key={index}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };

@@ -9,7 +9,7 @@ const PageNotFound = () => {
   }
 
   return (
-    <div className="w-full min-h-[100vh] relative top-8 flex items-center justify-center">
+    <div className="mt-20 sm:mt-16 w-full">
       <div className="w-full h-max flex flex-col items-center justify-center gap-y-5">
         <div className="custom-text sm:text-[8vw] text-[70px] flex items-center justify-center">
           <p>4</p>

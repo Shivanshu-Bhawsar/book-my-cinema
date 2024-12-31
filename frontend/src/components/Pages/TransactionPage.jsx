@@ -48,60 +48,62 @@ const TransactionPage = () => {
         <h1 className="text-2xl sm:text-[26px] lg:text-[34px] text-rose-500 font-medium">
           Booking History
         </h1>
-        <div className="w-screen sm:w-[72%] md:w-[60%] mt-3 sm:mt-5 px-5 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
-          {bookings.map((booking) => (
-            <div
-              key={booking._id}
-              className="bg-white w-full rounded-md sm:shadow-lg border-b-2 space-y-4 cursor-pointer"
-              onClick={() => ticketClickHandler(booking)}
-            >
-              <div className="w-full p-3 flex items-center justify-start gap-5">
-                <div>
-                  <img
-                    src={booking.showId.movieId.thumbnail}
-                    className="w-[60px] h-[60px] object-cover rounded-md"
-                  />
-                </div>
-                <div className="flex flex-col items-start justify-center">
-                  <h2 className="sm:text-[15px] text-[12px] font-[600] font-sans">
-                    {booking.showId.movieId.movieName}
-                  </h2>
-                  <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs hidden sm:block">{`${formatDate(
-                    booking.showId.showStart,
-                    booking.showId.timing,
-                    booking.showId.showEnd
-                  )} | ${booking.bookedSeats.length} Ticket`}</p>
-                  <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${formatDate(
-                    booking.showId.showStart,
-                    booking.showId.timing,
-                    booking.showId.showEnd
-                  )}`}</p>
-                  <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${booking.bookedSeats.length} Ticket`}</p>
-                  <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs capitalize">{`${booking.showId.cinemaId.cinemaName}, ${booking.showId.cinemaId.cityId.cityName}`}</p>
-                </div>
-                {/* Flex container for the button */}
-                <div className="ml-auto">
-                  <button
-                    onClick={() => ticketClickHandler(booking)}
-                    className="w-fit mt-3 px-5 py-2 rounded-lg text-[rgb(139,139,139)] text-[40px] font-[300]"
-                  >
+        {loading ? (
+          <div className="w-screen h-screen flex items-center justify-center">
+            <div className="custom-loader"></div>
+          </div>
+        ) : (
+          <div className="w-screen sm:w-[72%] md:w-[60%] mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
+            {bookings.map((booking) => (
+              <div
+                key={booking._id}
+                className="bg-white w-full rounded-md sm:shadow-lg border-b-2 space-y-4 cursor-pointer"
+                onClick={() => ticketClickHandler(booking)}
+              >
+                <div className="w-full p-3 flex items-center justify-between gap-5">
+                  <div className="flex justify-start items-center gap-5">
+                    <div>
+                      <img
+                        src={booking.showId.movieId.thumbnail}
+                        className="w-[65px] h-[75px] sm:w-[65px] sm:h-[65px] object-cover rounded-md"
+                      />
+                    </div>
+                    <div className="flex flex-col items-start justify-center">
+                      <h2 className="sm:text-[15px] text-[12px] font-[600] font-sans">
+                        {booking.showId.movieId.movieName}
+                      </h2>
+                      <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs hidden sm:block">{`${formatDate(
+                        booking.showId.showStart,
+                        booking.showId.timing,
+                        booking.showId.showEnd
+                      )} | ${booking.bookedSeats.length} Ticket`}</p>
+                      <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${formatDate(
+                        booking.showId.showStart,
+                        booking.showId.timing,
+                        booking.showId.showEnd
+                      )}`}</p>
+                      <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${booking.bookedSeats.length} Ticket`}</p>
+                      <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs capitalize">{`${booking.showId.cinemaId.cinemaName}, ${booking.showId.cinemaId.cityId.cityName}`}</p>
+                    </div>
+                  </div>
+                  <div>
                     <p className="text-[15px] text-red-600 flex items-center justify-center h-full">
                       <MdOutlineCurrencyRupee />
                       {`${booking.totalAmount / 100}`}
                     </p>
-                  </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
 
-          {selectedBooking && (
-            <TicketBox
-              booking={selectedBooking}
-              onClose={() => setSelectedBooking(null)}
-            />
-          )}
-        </div>
+            {selectedBooking && (
+              <TicketBox
+                booking={selectedBooking}
+                onClose={() => setSelectedBooking(null)}
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Footer = () => {
           Shivanshu Bhawsar, Sandeep Dubliya, Rohit Jaiswal, Yashwant Patel,
           Uday Malakar
         </div>
-        <div className="sm:w-[200px] sm:opacity-100 opacity-0 w-0 h-[40px] bg-red-500 text-white text-center font-sans font-semibold rounded-md flex items-center justify-center">
+        <div className="sm:w-[200px] sm:opacity-100 opacity-0 w-0 h-[40px] bg-rose-500 text-white text-center font-sans font-semibold rounded-md flex items-center justify-center">
           <button>Contact Today!</button>
         </div>
       </div>
