@@ -44,7 +44,7 @@ const TransactionPage = () => {
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="my-5 flex flex-col justify-center items-center">
+      <div className="mt-5 flex flex-col justify-center items-center">
         <h1 className="text-2xl sm:text-[26px] lg:text-[34px] text-rose-500 font-medium">
           Booking History
         </h1>
@@ -53,7 +53,7 @@ const TransactionPage = () => {
             <div className="custom-loader"></div>
           </div>
         ) : (
-          <div className="sm:w-[72%] md:w-[60%] mt-3 mb-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
+          <div className="sm:w-[72%] md:w-[60%] mb-20 sm:mb-10 mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
             {bookings.map((booking) => (
               <div
                 key={booking._id}

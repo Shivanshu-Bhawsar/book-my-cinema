@@ -23,6 +23,7 @@ const movieShowSchema = new mongoose.Schema({
   showEnd: {
     type: Date,
     required: true,
+    // index: { expires: '0s' } // Automatically delete the document when showEnd is reached
   },
   isLive: {
     type: Boolean,

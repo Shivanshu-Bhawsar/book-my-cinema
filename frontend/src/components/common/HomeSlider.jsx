@@ -106,7 +106,7 @@ const HomeSlider = ({ isShow = true }) => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center bg-gray-100">
-      <div className="w-full md:h-auto h-0 opacity-0 md:opacity-100 py-3 px-5 md:px-7 flex flex-wrap gap-2 items-center justify-between bg-white sm:bg-[rgb(245,245,245)]">
+      <div className="w-full md:h-auto h-0 opacity-0 md:opacity-100 py-3 px-5 md:px-7 flex flex-wrap gap-2 items-center justify-between">
         <div>
           <ul
             ref={topLiRef}

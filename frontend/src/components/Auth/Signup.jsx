@@ -73,8 +73,8 @@ const Signup = () => {
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-5 mb-7 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md bg-white p-6 shadow-lg rounded-lg">
+      <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="w-full mt-5 mb-20 sm:mb-10 max-w-md bg-white p-6 shadow-lg rounded-lg">
           <h1 className="text-3xl sm:text-4xl font-semibold text-center w-full text-rose-500 ">
             Hello
           </h1>

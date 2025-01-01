@@ -259,7 +259,7 @@ const ShowSeats = () => {
             {seatArray.length === 0 ? (
               <div className="text-center">No Show Found</div>
             ) : (
-              <div className="my-3 sm:my-1">
+              <div className="pb-20 sm:pb-10 mt-3 sm:mt-1">
                 <div className="w-full flex flex-col items-center justify-start gap-2 p-4">
                   <div className="flex items-center justify-start gap-3">
                     <div>{seatArray[0]?.cinemaId?.cinemaName}</div>
@@ -378,7 +378,7 @@ const ShowSeats = () => {
                   </div>
                 </div>
 
-                <div className="text-center mt-5 mb-10">
+                <div className="text-center mt-5">
                   {mySeats.length !== 0 && (
                     <button
                       className="bg-rose-500 hover:bg-rose-600 text-white px-10 sm:px-20 py-2 rounded"

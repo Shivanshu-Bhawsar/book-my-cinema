@@ -23,6 +23,10 @@ const bookingSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  // showDate: {
+  //   type: Date,
+  //   required: true,
+  // },
   isUsed: {
     type: Boolean,
     default: false,

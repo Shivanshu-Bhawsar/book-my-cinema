@@ -25,7 +25,7 @@ const AdminCinemas = () => {
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="my-5 flex flex-col justify-center items-center">
+      <div className="mt-5 flex flex-col justify-center items-center">
         <h1 className="text-2xl sm:text-[26px] lg:text-[32px] text-rose-500 font-medium">
           Cinema List
         </h1>
@@ -34,7 +34,7 @@ const AdminCinemas = () => {
             <div className="custom-loader"></div>
           </div>
         ) : (
-          <div className="my-3 sm:my-5 px-5 sm:px-8 py-3 bg-gray-200 rounded-md">
+          <div className="mb-20 sm:mb-10 mt-3 sm:mt-5 px-5 sm:px-8 py-3 bg-gray-200 rounded-md">
             {adminCinemas?.map((cinema, index) => (
               <div
                 key={cinema._id}

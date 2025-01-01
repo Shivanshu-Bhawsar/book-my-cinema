@@ -58,7 +58,7 @@ const UpdateScreen = () => {
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="my-5 flex flex-col justify-center items-center">
+      <div className="mt-5 flex flex-col justify-center items-center">
         <h1 className="text-2xl sm:text-[26px] lg:text-[32px] text-rose-500 font-medium">
           Update Screen
         </h1>
@@ -71,10 +71,10 @@ const UpdateScreen = () => {
             onSubmit={handleOnSubmit}
             style={{
               width: isMobile ? "85%" : "0%",
-              minWidth: isMobile ? "0px" : "330px",
+              minWidth: isMobile ? "0px" : "350px",
               padding: isMobile ? "22px" : "32px",
             }}
-            className="mx-auto my-3 sm:my-5 bg-gray-200 shadow-lg rounded-lg space-y-5"
+            className="mx-auto mb-20 sm:mb-10 mt-3 sm:mt-5 bg-gray-200 shadow-lg rounded-lg space-y-5"
           >
             {Object.keys(formData)
               .filter((category) => category !== "screenId")

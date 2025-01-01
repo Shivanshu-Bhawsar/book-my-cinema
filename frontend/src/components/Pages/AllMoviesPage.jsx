@@ -242,7 +242,7 @@ const AllMoviesPage = () => {
         </div>
       )}
 
-      <div className="h-max mb-5 sm:p-2 flex mt-5 items-center justify-center">
+      <div className="mb-5 sm:p-2 flex mt-5 items-center justify-center">
         <div className="w-[90%] flex flex-col items-start justify-center">
           <h1 className="mb-2 text-[rgb(51,51,51)] font-[700] font-[roboto] sm:text-[30px] text-[20px]">
             The Best Live Events
@@ -259,7 +259,7 @@ const AllMoviesPage = () => {
         </div>
       </div>
 
-      <Footer />
+      <div className="pb-12 sm:pb-0"><Footer /></div>
     </div>
   );
 };

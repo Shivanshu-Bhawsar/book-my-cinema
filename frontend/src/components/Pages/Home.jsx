@@ -130,7 +130,7 @@ const Home = () => {
 
       <EventComponent />
 
-      <Footer />
+      <div className="mb-12 sm:mb-0"><Footer /></div>
     </div>
   );
 };
