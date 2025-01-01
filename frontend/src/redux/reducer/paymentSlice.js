@@ -66,6 +66,7 @@ export const verifyPayment = createAsyncThunk(
   "bookings/verifyPayment",
   async (verificationData, { rejectWithValue }) => {
     try {
+      console.log("bookdata: ", verificationData)
       const response = await AxiosInstance.post(
         VERIFICATION_PAYMENT_API,
         verificationData

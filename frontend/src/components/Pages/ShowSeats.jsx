@@ -59,7 +59,8 @@ const ShowSeats = () => {
     try {
       const captureResponse = await dispatch(capturePayment(requestData));
 
-      const amount = captureResponse.payload.data.amount;
+      const amount = captureResponse.payload.data.amount/100;
+      console.log("captu am: ", amount)
       const options = {
         key: "rzp_test_4Pd7FCcIYATYXN",
         amount,
@@ -89,7 +90,7 @@ const ShowSeats = () => {
 
             // Dispatch verifyPayment thunk
             await dispatch(verifyPayment(verificationData));
-            navigate("/book/transactions");
+            // navigate("/book/transactions");
           } catch (error) {
             console.error("Payment Verification Failed:", error.message);
           }
