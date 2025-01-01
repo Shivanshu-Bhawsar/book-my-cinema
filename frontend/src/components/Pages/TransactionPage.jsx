@@ -53,7 +53,7 @@ const TransactionPage = () => {
             <div className="custom-loader"></div>
           </div>
         ) : (
-          <div className="w-full sm:w-[72%] md:w-[60%] mb-20 sm:mb-10 mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
+          <div className="w-full sm:w-[75%] md:w-[60%] lg:w-[55%] mb-20 sm:mb-10 mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
             {bookings.map((booking) => (
               <div
                 key={booking._id}
@@ -87,7 +87,7 @@ const TransactionPage = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="text-[15px] text-red-600 flex items-center justify-center h-full">
+                    <p className="sm:pr-2 text-[15px] text-red-600 flex items-center justify-center h-full">
                       <MdOutlineCurrencyRupee />
                       {`${booking.totalAmount}`}
                     </p>
