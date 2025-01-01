@@ -89,7 +89,7 @@ const TransactionPage = () => {
                   <div>
                     <p className="text-[15px] text-red-600 flex items-center justify-center h-full">
                       <MdOutlineCurrencyRupee />
-                      {`${booking.totalAmount / 100}`}
+                      {`${booking.totalAmount}`}
                     </p>
                   </div>
                 </div>
