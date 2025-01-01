@@ -238,7 +238,7 @@ const MoviesPage = () => {
                   You might also like
                 </h4>
                 <Link
-                  to="/"
+                  to="/movies"
                   className="text-sm sm:text-lg font-medium text-rose-500"
                 >
                   View All

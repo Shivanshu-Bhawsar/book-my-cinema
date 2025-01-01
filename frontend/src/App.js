@@ -45,7 +45,7 @@ function App() {
   }
 
   return (
-    <div className="w-full flex flex-col bg-richblack-900 font-inter">
+    <div className="w-full h-screen bg-gray-100">
       <Toaster position="top-center" />
       <ScrollTop />
 

@@ -80,7 +80,7 @@ const CustomOtpInput = () => {
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="my-5 sm:mt-8 flex flex-col justify-center items-center">
+      <div className="mt-5 mb-7 sm:mt-8 flex flex-col justify-center items-center">
         <form
           onSubmit={handleVerifyAndSignup}
           className="w-[90%] sm:w-fit p-5 sm:p-8 bg-white shadow-lg rounded-lg space-y-6"
