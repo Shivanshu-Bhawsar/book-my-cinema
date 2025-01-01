@@ -53,7 +53,7 @@ const TransactionPage = () => {
             <div className="custom-loader"></div>
           </div>
         ) : (
-          <div className="sm:w-[72%] md:w-[60%] mb-20 sm:mb-10 mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
+          <div className="w-full sm:w-[72%] md:w-[60%] mb-20 sm:mb-10 mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
             {bookings.map((booking) => (
               <div
                 key={booking._id}
