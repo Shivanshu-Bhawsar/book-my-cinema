@@ -96,7 +96,7 @@ const AllMoviesPage = () => {
       </div>
 
       {isLoading ? (
-        <div className="w-screen h-screen flex items-center justify-center">
+        <div className="mt-20 sm:mt-28 flex items-center justify-center">
           <div className="custom-loader"></div>
         </div>
       ) : (
@@ -216,7 +216,7 @@ const AllMoviesPage = () => {
           </div>
 
           {/* Movies Section */}
-          <div className="w-full mt-3 flex flex-col items-start justify-center">
+          <div className="w-full mt-5 flex flex-col items-start justify-center">
             <div className="w-full mb-4 px-8 flex items-center justify-between">
               <button
                 className="px-5 sm:px-6 py-[6px] tracking-wider text-sm flex items-center justify-center bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-md"
@@ -229,7 +229,7 @@ const AllMoviesPage = () => {
               </p>
             </div>
 
-            <div className="w-[90%] mx-auto flex gap-5 p-3 mb-5 flex-wrap items-center justify-between">
+            <div className="w-full px-2 mt-3 mb-5 flex gap-5 flex-wrap items-start justify-center">
               {filterMovies.length ? (
                 filterMovies.map((movie) => (
                   <MovieCard movie={movie} key={movie._id} />
@@ -242,7 +242,7 @@ const AllMoviesPage = () => {
         </div>
       )}
 
-      <div className="w-screen h-max mb-5 sm:p-2 flex mt-5 items-center justify-center">
+      <div className="h-max mb-5 sm:p-2 flex mt-5 items-center justify-center">
         <div className="w-[90%] flex flex-col items-start justify-center">
           <h1 className="mb-2 text-[rgb(51,51,51)] font-[700] font-[roboto] sm:text-[30px] text-[20px]">
             The Best Live Events

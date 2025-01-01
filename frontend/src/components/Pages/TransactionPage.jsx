@@ -49,11 +49,11 @@ const TransactionPage = () => {
           Booking History
         </h1>
         {loading ? (
-          <div className="w-screen h-screen flex items-center justify-center">
+          <div className="mt-20 sm:mt-28 flex items-center justify-center">
             <div className="custom-loader"></div>
           </div>
         ) : (
-          <div className="w-screen sm:w-[72%] md:w-[60%] mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
+          <div className="sm:w-[72%] md:w-[60%] mt-3 mb-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
             {bookings.map((booking) => (
               <div
                 key={booking._id}

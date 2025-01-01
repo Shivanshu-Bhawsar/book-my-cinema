@@ -32,10 +32,7 @@ export default function App() {
   };
 
   return (
-    <div
-      style={{ position: "relative", width: "100vw", margin: "0 auto" }}
-      className="bg-[rgb(0,0,0)] sm:h-[90vh] flex items-center justify-center"
-    >
+    <div className="relative bg-[rgb(0,0,0)] sm:h-[90vh] flex items-center justify-center">
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

@@ -25,18 +25,18 @@ const AddCity = () => {
 
   if (loading) {
     return (
-      <div className="w-screen h-screen flex items-center justify-center">
-        <div className="custom-loader text-center"></div>
+      <div className="mt-20 sm:mt-28 flex items-center justify-center">
+        <div className="custom-loader"></div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="bg-gray-100">
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-5 flex flex-col justify-center items-center">
+      <div className="my-5 flex flex-col justify-center items-center">
         <h1 className="text-2xl sm:text-[26px] lg:text-[32px] text-rose-500 font-medium">
           Add City
         </h1>

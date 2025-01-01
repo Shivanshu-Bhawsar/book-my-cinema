@@ -251,7 +251,7 @@ const ShowSeats = () => {
       </div>
       <div>
         {loading ? (
-          <div className="w-screen h-screen flex items-center justify-center">
+          <div className="mt-20 sm:mt-28 flex items-center justify-center">
             <div className="custom-loader"></div>
           </div>
         ) : (
@@ -259,7 +259,7 @@ const ShowSeats = () => {
             {seatArray.length === 0 ? (
               <div className="text-center">No Show Found</div>
             ) : (
-              <div className="my-5">
+              <div className="my-3 sm:my-1">
                 <div className="w-full flex flex-col items-center justify-start gap-2 p-4">
                   <div className="flex items-center justify-start gap-3">
                     <div>{seatArray[0]?.cinemaId?.cinemaName}</div>
@@ -279,40 +279,11 @@ const ShowSeats = () => {
                   </div>
                 </div>
 
-                {/* <div className="w-full flex flex-col items-center justify-start gap-2 p-4">
-                  <div className="flex items-center justify-start gap-3">
-                    <div>{seatArray[0]?.cinemaId?.cinemaName}</div>
-                    <span>|</span>
-                    <div className="capitalize">
-                      {seatArray[0]?.cinemaId?.cityId?.cityName}
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-start gap-3">
-                    <div>
-                      Start:{" "}
-                      {formatDate(
-                        seatArray[0]?.showStart,
-                        seatArray[0]?.timing,
-                        "start"
-                      )}
-                    </div>
-                    <span>|</span>
-                    <div>
-                      End:{" "}
-                      {formatDate(
-                        seatArray[0]?.showEnd,
-                        seatArray[0]?.timing,
-                        "end"
-                      )}
-                    </div>
-                  </div>
-                </div> */}
-
                 <div className="w-full border-[1px] bg-[rgb(246,245,250)] h-[30px]"></div>
 
                 <div className="w-full min-h-[60%] bg-[rgb(250,250,250)] flex items-center justify-center flex-col gap-4">
                   {/* VIP Seats */}
-                  <div className="w-[50%] flex items-center justify-center gap-2 p-2">
+                  <div className="w-[50%] mt-3 flex items-center justify-center gap-2 p-2">
                     {vipSeat.length !== 0 && (
                       <div className="w-full flex items-center justify-center flex-col">
                         <div className="w-[100%] sm:w-[80%] text-left text-[10px] sm:text-xs border-b-[0.5px] border-b-[rgb(237,237,237)]">
@@ -391,7 +362,7 @@ const ShowSeats = () => {
                   </div>
                   <div class="w-[60%] h-[2px] mx-auto bg-gradient-to-r from-transparent via-black to-transparent rounded-full"></div>
 
-                  <div className="w-screen flex items-center h-[30px] p-5 sm:gap-10 gap-4 justify-center">
+                  <div className="mb-3 flex items-center h-[30px] p-5 sm:gap-10 gap-4 justify-center">
                     <div className="flex items-center justify-center gap-2">
                       <div className="sm:w-[20px] sm:h-[20px] w-[14px] h-[14px] border border-[#1ea83c] text-[#1ea83c] rounded-sm"></div>
                       <p>Available</p>
@@ -407,7 +378,7 @@ const ShowSeats = () => {
                   </div>
                 </div>
 
-                <div className="text-center my-5">
+                <div className="text-center mt-5 mb-10">
                   {mySeats.length !== 0 && (
                     <button
                       className="bg-rose-500 hover:bg-rose-600 text-white px-10 sm:px-20 py-2 rounded"

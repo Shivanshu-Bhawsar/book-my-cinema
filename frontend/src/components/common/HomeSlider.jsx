@@ -244,7 +244,7 @@ const HomeSlider = ({ isShow = true }) => {
       )}
 
       {isShow && (
-        <div className="sm:w-full sm:h-max w-screen flex items-center justify-center sm:mt-5 sm:pt-0 pt-3 ">
+        <div className="sm:w-full sm:h-max flex items-center justify-center sm:mt-5 sm:pt-0 pt-3 ">
           <img
             ref={bannerImgRef}
             src={bannerImgTwo}

@@ -28,11 +28,11 @@ const LiveYourShow = () => {
   }, []);
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="bg-gray-100">
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-5 flex flex-col ">
+      <div className="my-5 flex flex-col ">
         <h1 className="text-2xl text-center sm:text-[26px] lg:text-[32px] text-rose-500 font-medium">
           Live Your Show
         </h1>

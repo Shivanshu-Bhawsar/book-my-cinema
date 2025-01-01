@@ -63,11 +63,11 @@ const AddShow = () => {
   }, [formData.cinemaId]);
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="bg-gray-100">
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-5 flex flex-col justify-center items-center">
+      <div className="my-5 flex flex-col justify-center items-center">
         <h1 className="text-2xl sm:text-[26px] lg:text-[32px] text-rose-500 font-medium">
           Add Show
         </h1>

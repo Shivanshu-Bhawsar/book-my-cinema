@@ -5,7 +5,7 @@ import PremiereSlider from "./PremiereSlider";
 
 const PremiereComponent = () => {
   return (
-    <div className="w-screen sm:min-h-[100vh] min-h-[80vh] bg-[rgb(43,49,73)] flex items-center justify-center">
+    <div className="sm:min-h-[100vh] min-h-[80vh] bg-[rgb(43,49,73)] flex items-center justify-center">
       <div className="flex flex-col w-[90%] min-h-[90%]">
         <div>
           <img className="sm:mb-10 sm:w-auto" src={playImg} alt="Play" />

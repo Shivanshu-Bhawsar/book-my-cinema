@@ -38,7 +38,7 @@ const UpdateMoviePage = () => {
         })
       );
     } else {
-      console.log(
+      console.error(
         "Fetch failed in update movie: ",
         result.payload || result.error
       );
@@ -85,11 +85,11 @@ const UpdateMoviePage = () => {
   }, [dispatch, movie_id]);
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="bg-gray-100">
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-5 flex flex-col justify-center items-center">
+      <div className="my-5 flex flex-col justify-center items-center">
         <h1 className="text-2xl sm:text-[26px] lg:text-[34px] text-rose-500 font-medium">
           Update Movie
         </h1>
@@ -106,7 +106,7 @@ const UpdateMoviePage = () => {
               minWidth: isMobile ? "0px" : "400px",
               padding: isMobile ? "22px" : "32px",
             }}
-            className="mx-auto mt-3 mb-20 sm:my-5 bg-gray-200 shadow-lg rounded-lg space-y-5"
+            className="mx-auto my-3 sm:my-5 bg-gray-200 shadow-lg rounded-lg space-y-5"
           >
             {/* Movie Name */}
             <div>

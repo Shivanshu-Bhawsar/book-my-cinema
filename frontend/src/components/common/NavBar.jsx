@@ -30,7 +30,6 @@ const NavBar = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuBarRef.current && !menuBarRef.current.contains(event.target)) {
-        console.log("kii");
         setMenuOpen(false);
       }
     };

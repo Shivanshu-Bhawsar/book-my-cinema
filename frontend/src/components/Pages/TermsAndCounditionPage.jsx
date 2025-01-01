@@ -8,7 +8,7 @@ const TermsAndCounditionPage = () => {
   };
 
   return (
-    <div className="w-screen flex items-center justify-center px-5">
+    <div className="flex items-center justify-center px-5">
       <div className="w-[50%]">
         1.The show will run only if minimum of 6 tickets are sold in that show.
         <br></br>

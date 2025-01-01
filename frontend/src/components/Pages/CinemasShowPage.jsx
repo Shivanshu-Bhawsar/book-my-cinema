@@ -52,8 +52,8 @@ const CinemasShowPage = () => {
         <HomeSlider isShow={false} />
       </div>
       {loading ? (
-        <div className="w-screen h-screen flex items-center justify-center">
-          <div className="custom-loader text-center"></div>
+        <div className="mt-20 sm:mt-28 flex items-center justify-center">
+          <div className="custom-loader"></div>
         </div>
       ) : (
         <div className="my-5 sm:my-8">

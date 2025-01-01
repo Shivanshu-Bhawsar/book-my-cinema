@@ -47,7 +47,7 @@ const AddMoviePage = () => {
       toast.error("All fields are required");
       return;
     }
-    
+
     // Dispatch the form data to Redux for API submission
     try {
       await dispatch(addMovie(formData));
@@ -63,18 +63,18 @@ const AddMoviePage = () => {
 
   if (loading) {
     return (
-      <div className="w-screen h-screen flex items-center justify-center">
+      <div className="mt-20 sm:mt-28 flex items-center justify-center">
         <div className="custom-loader"></div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="bg-gray-100">
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
-      <div className="mt-5 flex flex-col justify-center items-center">
+      <div className="my-5 flex flex-col justify-center items-center">
         <h1 className="text-2xl sm:text-[26px] lg:text-[34px] text-rose-500 font-medium">
           Add Movie
         </h1>
@@ -85,7 +85,7 @@ const AddMoviePage = () => {
             minWidth: isMobile ? "0px" : "400px",
             padding: isMobile ? "22px" : "32px",
           }}
-          className="mx-auto mt-3 mb-20 sm:my-5 bg-gray-200 shadow-lg rounded-lg space-y-5"
+          className="mx-auto my-3 sm:my-5 bg-gray-200 shadow-lg rounded-lg space-y-5"
         >
           {/* Movie Name */}
           <div>
@@ -123,7 +123,10 @@ const AddMoviePage = () => {
                     onChange={(e) => handleCheckboxChange(e, "categories")}
                     className="mr-2 cursor-pointer"
                   />
-                  <label htmlFor={category} className="text-sm text-gray-700 cursor-pointer">
+                  <label
+                    htmlFor={category}
+                    className="text-sm text-gray-700 cursor-pointer"
+                  >
                     {category}
                   </label>
                 </div>
@@ -196,7 +199,10 @@ const AddMoviePage = () => {
                     onChange={(e) => handleCheckboxChange(e, "genres")}
                     className="mr-2 cursor-pointer"
                   />
-                  <label htmlFor={genre} className="text-sm text-gray-700 cursor-pointer">
+                  <label
+                    htmlFor={genre}
+                    className="text-sm text-gray-700 cursor-pointer"
+                  >
                     {genre}
                   </label>
                 </div>

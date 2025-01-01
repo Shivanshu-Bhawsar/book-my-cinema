@@ -1,8 +1,7 @@
 const filterData = {
-  languages: ["Hindi", "English", "Japanese", "Tamil", "Telugu", "Korean"],
-  genres: ["Action", "Comedy", "Drama", "Sci-Fi", "Adventure"],
+  languages: ["English", "Hindi", "Kannada", "Telugu", "Tamil"],
+  genres: ["Action", "Adventure", "Comedy", "Drama", "Family", "Horror", "Romantic", "Sci-Fi", "Sports", "Thriller"],
   formats: ["2D", "3D", "4DX", "IMAX", "Dolby Digital"],
 };
 
-// Export the filterData array
 export default filterData;

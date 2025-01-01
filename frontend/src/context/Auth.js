@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
         setIsLoggedIn(true);
       }
     } catch (error) {
-      console.log("Error in auth.js: ", error);
+      console.error("Error in auth.js: ", error);
     }
   }
 

@@ -53,7 +53,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="overflow-hidden bg-gray-100">
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

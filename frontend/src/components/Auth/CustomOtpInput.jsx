@@ -76,7 +76,7 @@ const CustomOtpInput = () => {
   };
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="bg-gray-100">
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>

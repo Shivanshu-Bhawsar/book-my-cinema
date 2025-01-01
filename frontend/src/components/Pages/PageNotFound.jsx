@@ -4,9 +4,6 @@ import { FcFilmReel } from "react-icons/fc";
 
 const PageNotFound = () => {
   const navigate = useNavigate();
-  function clickHandler() {
-    navigate("/");
-  }
 
   return (
     <div className="mt-20 sm:mt-16 w-full">
@@ -26,7 +23,7 @@ const PageNotFound = () => {
         </p>
         <button
           className="w-[150px] h-[40px] bg-green-500 text-white rounded-sm hover:scale-110 transition-all "
-          onClick={clickHandler}
+          onClick={() => navigate("/")}
         >
           Back to Home
         </button>

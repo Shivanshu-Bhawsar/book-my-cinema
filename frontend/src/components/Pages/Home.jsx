@@ -75,8 +75,8 @@ const Home = () => {
     <div className="bg-gray-100 scrollbar-hide overflow-x-scroll">
       <HomeSlider />
       {isLoading ? (
-        <div className="flex items-center justify-center w-screen h-[400px]">
-          <div className="custom-loader text-center"></div>
+        <div className="mt-20 sm:mt-28 flex items-center justify-center">
+          <div className="custom-loader"></div>
         </div>
       ) : (
         <div className="mt-8 sm:mt-12 flex flex-col items-start justify-center">
@@ -94,7 +94,7 @@ const Home = () => {
           </div>
         </div>
       )}
-      <div className="w-screen h-max sm:p-2 flex mt-5 items-center justify-center">
+      <div className="h-max sm:p-2 flex mt-5 items-center justify-center">
         <div className="w-[90%] flex flex-col items-start justify-center">
           <h1 className="mb-2 text-[rgb(51,51,51)] font-[700] font-[roboto] sm:text-[30px] text-[20px]">
             The Best Live Events
@@ -113,7 +113,7 @@ const Home = () => {
       <div className="w-full sm:h-0 p-2 mt-3 sm:opacity-0 opacity-100">
         <img src={offerBanner}></img>
       </div>
-      <div className="w-screen h-max p-18 mt-5 mb-0 sm:mb-5">
+      <div className="h-max p-18 mt-5 mb-0 sm:mb-5">
         <SliderComponent />
       </div>
       <div className="w-[100vw] my-2 bg-white">
