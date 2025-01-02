@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { login, signup, sendOTP } = require("../controllers/Auth");
-const { getAdminRevenueDetails, getRevenueDetailsByCity } = require("../controllers/revenueController");
+const { getAdminRevenueDetails, getRevenueDetailsByCity } = require("../controllers/Revenue");
 const { auth, isAdmin, isSuperAdmin } = require("../middlewares/auth");
 
 router.post("/signup", signup);

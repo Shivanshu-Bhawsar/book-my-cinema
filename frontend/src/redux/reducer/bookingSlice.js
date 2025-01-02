@@ -57,8 +57,7 @@ const bookSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchAllBookings.rejected, (state, action) => {
-        state.cinemas = [];
-        state.movieDetailes = {};
+        state.bookings = [];
         state.loading = false;
         state.error = action.payload;
       });

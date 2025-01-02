@@ -54,47 +54,51 @@ const TransactionPage = () => {
           </div>
         ) : (
           <div className="w-full sm:w-[75%] md:w-[60%] lg:w-[55%] mb-20 sm:mb-10 mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
-            {bookings.map((booking) => (
-              <div
-                key={booking._id}
-                className="bg-white w-full rounded-md sm:shadow-lg border-b-2 space-y-4 cursor-pointer"
-                onClick={() => ticketClickHandler(booking)}
-              >
-                <div className="w-full p-3 flex items-center justify-between gap-5">
-                  <div className="flex justify-start items-center gap-5">
+            {bookings.length > 0 ? (
+              bookings.map((booking) => (
+                <div
+                  key={booking._id}
+                  className="bg-white w-full rounded-md sm:shadow-lg border-b-2 space-y-4 cursor-pointer"
+                  onClick={() => ticketClickHandler(booking)}
+                >
+                  <div className="w-full p-3 flex items-center justify-between gap-5">
+                    <div className="flex justify-start items-center gap-5">
+                      <div>
+                        <img
+                          src={booking.showId.movieId.thumbnail}
+                          className="w-[65px] h-[75px] sm:w-[65px] sm:h-[65px] object-cover rounded-md"
+                        />
+                      </div>
+                      <div className="flex flex-col items-start justify-center">
+                        <h2 className="sm:text-[15px] text-[12px] font-[600] font-sans">
+                          {booking.showId.movieId.movieName}
+                        </h2>
+                        <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs hidden sm:block">{`${formatDate(
+                          booking.showId.showStart,
+                          booking.showId.timing,
+                          booking.showId.showEnd
+                        )} | ${booking.bookedSeats.length} Ticket`}</p>
+                        <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${formatDate(
+                          booking.showId.showStart,
+                          booking.showId.timing,
+                          booking.showId.showEnd
+                        )}`}</p>
+                        <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${booking.bookedSeats.length} Ticket`}</p>
+                        <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs capitalize">{`${booking.showId.cinemaId.cinemaName}, ${booking.showId.cinemaId.cityId.cityName}`}</p>
+                      </div>
+                    </div>
                     <div>
-                      <img
-                        src={booking.showId.movieId.thumbnail}
-                        className="w-[65px] h-[75px] sm:w-[65px] sm:h-[65px] object-cover rounded-md"
-                      />
+                      <p className="sm:pr-2 text-[15px] text-red-600 flex items-center justify-center h-full">
+                        <MdOutlineCurrencyRupee />
+                        {`${booking.totalAmount}`}
+                      </p>
                     </div>
-                    <div className="flex flex-col items-start justify-center">
-                      <h2 className="sm:text-[15px] text-[12px] font-[600] font-sans">
-                        {booking.showId.movieId.movieName}
-                      </h2>
-                      <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs hidden sm:block">{`${formatDate(
-                        booking.showId.showStart,
-                        booking.showId.timing,
-                        booking.showId.showEnd
-                      )} | ${booking.bookedSeats.length} Ticket`}</p>
-                      <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${formatDate(
-                        booking.showId.showStart,
-                        booking.showId.timing,
-                        booking.showId.showEnd
-                      )}`}</p>
-                      <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs block sm:hidden">{`${booking.bookedSeats.length} Ticket`}</p>
-                      <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs capitalize">{`${booking.showId.cinemaId.cinemaName}, ${booking.showId.cinemaId.cityId.cityName}`}</p>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="sm:pr-2 text-[15px] text-red-600 flex items-center justify-center h-full">
-                      <MdOutlineCurrencyRupee />
-                      {`${booking.totalAmount}`}
-                    </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <div className="mt-5 text-center text-lg">No bookings found</div>
+            )}
 
             {selectedBooking && (
               <TicketBox

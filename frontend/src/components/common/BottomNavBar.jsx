@@ -1,21 +1,26 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { BsFillCameraReelsFill } from "react-icons/bs";
 import { BsFillTicketPerforatedFill } from "react-icons/bs";
 import { IoPersonSharp } from "react-icons/io5";
 import { ImHome } from "react-icons/im";
 
 const BottomNavBar = () => {
-  // const logo = require("../../utils/png-clipart-bookmyshow-office-android-ticket-android-text-logo-removebg-preview.png");
-  const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || null
+  );
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      setUser(storedUser);
+    };
+    handleStorageChange();
+  }, [navigate]);
 
   return (
-    <div
-      style={{
-        zIndex: "999",
-      }}
-      className="sm:opacity-0 opacity-100 w-full h-[50px] p-3 fixed bottom-0 bg-white flex"
-    >
+    <div className="w-full h-[50px] opacity-100 sm:opacity-0 px-5 py-3 fixed bottom-0 bg-white flex z-50">
       <ul className="flex items-center justify-between bg-white w-full">
         <NavLink
           to="/"
@@ -53,7 +58,7 @@ const BottomNavBar = () => {
           </li>
         </NavLink>
         <NavLink
-          to="/profile"
+          to={user ? "/profile" : "/signup"}
           className={({ isActive }) =>
             isActive ? "text-rose-500" : "text-black"
           }
