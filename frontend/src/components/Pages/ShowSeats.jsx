@@ -360,7 +360,7 @@ const ShowSeats = () => {
                       </div>
                     )}
                   </div>
-                  <div class="w-[60%] h-[2px] mx-auto bg-gradient-to-r from-transparent via-black to-transparent rounded-full"></div>
+                  <div className="w-[60%] h-[2px] mx-auto bg-gradient-to-r from-transparent via-black to-transparent rounded-full"></div>
 
                   <div className="mb-3 flex items-center h-[30px] p-5 sm:gap-10 gap-4 justify-center">
                     <div className="flex items-center justify-center gap-2">
