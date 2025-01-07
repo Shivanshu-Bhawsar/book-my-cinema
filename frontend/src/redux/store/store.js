@@ -7,6 +7,7 @@ import seatReducer from "../reducer/seatSlice";
 import showReducer from "../reducer/showSlice";
 import bookReducer from "../reducer/bookingSlice";
 import paymentReducer from "../reducer/paymentSlice";
+import revenueReducer from "../reducer/revenueSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     show: showReducer,
     book: bookReducer,
     payment: paymentReducer,
+    revenue: revenueReducer,
   },
 });

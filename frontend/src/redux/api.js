@@ -33,3 +33,9 @@ export const bookingEndPoints = {
   VERIFICATION_PAYMENT_API: BASE_URL + "/payment/verifyPayment",
   RESERVE_SEATS_API: BASE_URL + "/show/reserveSeats",
 };
+
+export const revenueEndPoints = {
+  ADMIN_REVENUE_API: BASE_URL + "/auth/admin-revenue-details",
+  SUPERADMIN_REVENUE_API: BASE_URL + "/auth/superadmin-revenue-details",
+  CITY_REVENUE_API: BASE_URL + "/auth/city-revenue-details",
+};

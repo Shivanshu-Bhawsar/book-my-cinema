@@ -7,13 +7,6 @@ const citySchema = new mongoose.Schema({
     lowercase: true,
     required: true,
   },
-
-  // state: { type: String, required: true },
-  // pincodes: [
-  //   {
-  //     type: Number,
-  //   },
-  // ],
 });
 
 module.exports = mongoose.model("City", citySchema);

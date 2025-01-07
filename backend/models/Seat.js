@@ -21,14 +21,6 @@ const seatSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  // row: {
-  //   type: String,
-  //   required: true,
-  // },
-  // colNo: {
-  //   type: Number,
-  //   required: true,
-  // },
 });
 
 module.exports = mongoose.model("Seat", seatSchema);

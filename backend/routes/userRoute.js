@@ -7,7 +7,7 @@ const {
   getRevenueDetailsByCity,
   getRevenueByCityId,
 } = require("../controllers/Revenue");
-const { auth, isAdmin, isSuperAdmin } = require("../middlewares/auth");
+const { auth, isSuperAdmin } = require("../middlewares/auth");
 
 router.post("/signup", signup);
 router.post("/sendotp", sendOTP);

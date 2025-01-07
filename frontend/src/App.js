@@ -29,8 +29,15 @@ import ScrollTop from "./utils/ScrollTop";
 import LoaderPage from "./utils/LoaderPage";
 import BottomNavBar from "./components/common/BottomNavBar";
 import Profile from "./components/Pages/Profile";
+import CitiesRevenue from "./components/superadmin/CitiesRevenue";
+import CityRevenue from "./components/superadmin/CityRevenue";
+import AdminDetails from "./components/Pages/AdminDetails";
 
 function App() {
+  const user = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
+  const isSuperAdmin = user?.accountType === "SuperAdmin";
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -100,6 +107,36 @@ function App() {
             </SuperAdminProtected>
           }
         />
+        <Route
+          path="/cities-revenue"
+          element={
+            <SuperAdminProtected>
+              <CitiesRevenue />
+            </SuperAdminProtected>
+          }
+        />
+        <Route
+          path="/city-revenue/:cityId"
+          element={
+            <SuperAdminProtected>
+              <CityRevenue />
+            </SuperAdminProtected>
+          }
+        />
+        <Route
+          path="/admin-details/:adminId"
+          element={
+            isSuperAdmin ? (
+              <SuperAdminProtected>
+                <AdminDetails />
+              </SuperAdminProtected>
+            ) : (
+              <AdminProtected>
+                <AdminDetails />
+              </AdminProtected>
+            )
+          }
+        />
 
         {/* Admin Routes */}
         <Route
@@ -145,7 +182,9 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
-      <div className="block sm:hidden mt-12 sm:mt-0"><BottomNavBar /></div>
+      <div className="block sm:hidden mt-12 sm:mt-0">
+        <BottomNavBar />
+      </div>
     </div>
   );
 }
