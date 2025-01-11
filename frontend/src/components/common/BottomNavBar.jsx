@@ -46,17 +46,45 @@ const BottomNavBar = () => {
             <p>Movies</p>
           </li>
         </NavLink>
-        <NavLink
-          to={user ? "/book/transactions" : "/login"}
-          className={({ isActive }) =>
-            isActive ? "text-rose-500" : "text-black"
-          }
-        >
-          <li className="flex flex-col items-center justify-center">
-            <BsFillTicketPerforatedFill className="w-[30px] h-[20px]" />
-            <p>Your Tickets</p>
-          </li>
-        </NavLink>
+        {user?.accountType === "SuperAdmin" && (
+          <NavLink
+            to={user ? "/cities-revenue" : "/login"}
+            className={({ isActive }) =>
+              isActive ? "text-rose-500" : "text-black"
+            }
+          >
+            <li className="flex flex-col items-center justify-center">
+              <BsFillTicketPerforatedFill className="w-[30px] h-[20px]" />
+              <p>Revenue</p>
+            </li>
+          </NavLink>
+        )}
+        {user?.accountType === "Admin" && (
+          <NavLink
+            to={user ? "/cities-revenue" : "/login"}
+            className={({ isActive }) =>
+              isActive ? "text-rose-500" : "text-black"
+            }
+          >
+            <li className="flex flex-col items-center justify-center">
+              <BsFillTicketPerforatedFill className="w-[30px] h-[20px]" />
+              <p>Revenue</p>
+            </li>
+          </NavLink>
+        )}
+        {(user == null || user?.accountType === "Viewer") && (
+          <NavLink
+            to={user ? "/book/transactions" : "/login"}
+            className={({ isActive }) =>
+              isActive ? "text-rose-500" : "text-black"
+            }
+          >
+            <li className="flex flex-col items-center justify-center">
+              <BsFillTicketPerforatedFill className="w-[30px] h-[20px]" />
+              <p>Your Tickets</p>
+            </li>
+          </NavLink>
+        )}
         <NavLink
           to={user ? "/profile" : "/signup"}
           className={({ isActive }) =>

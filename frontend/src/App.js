@@ -32,6 +32,7 @@ import Profile from "./components/Pages/Profile";
 import CitiesRevenue from "./components/superadmin/CitiesRevenue";
 import CityRevenue from "./components/superadmin/CityRevenue";
 import AdminDetails from "./components/Pages/AdminDetails";
+import AdminsPage from "./components/superadmin/AdminsPage";
 
 function App() {
   const user = localStorage.getItem("user")
@@ -120,6 +121,14 @@ function App() {
           element={
             <SuperAdminProtected>
               <CityRevenue />
+            </SuperAdminProtected>
+          }
+        />
+        <Route
+          path="/admins-details"
+          element={
+            <SuperAdminProtected>
+              <AdminsPage />
             </SuperAdminProtected>
           }
         />

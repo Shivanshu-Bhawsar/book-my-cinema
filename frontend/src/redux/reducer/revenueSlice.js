@@ -121,7 +121,7 @@ export const adminCitiesRevenueApi = createAsyncThunk(
 
 // ------------------ adminsDetailsApi -------------------
 export const adminsDetailsApi = createAsyncThunk(
-  "auth/adminsDetails",
+  "revenue/adminsDetails",
   async (_, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.get(ADMINS_DETAILS_API);

@@ -178,7 +178,7 @@ const HomeSlider = ({ isShow = true }) => {
                 <NavLink to="/cities-revenue">Revenue</NavLink>
               </li>
               <li>
-                <NavLink to="/cities-revenue">Admin Details</NavLink>
+                <NavLink to="/admins-details">Admins Detail</NavLink>
               </li>
               <li>
                 <NavLink to="/movie/addMovie">Add Movie</NavLink>

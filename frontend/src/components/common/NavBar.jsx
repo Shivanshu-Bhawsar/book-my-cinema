@@ -159,6 +159,9 @@ const NavBar = () => {
                       <li onClick={() => setMenuOpen(false)}>
                         <NavLink to="/addCity">Add City</NavLink>
                       </li>
+                      <li onClick={() => setMenuOpen(false)}>
+                        <NavLink to="/admins-details">Admins Detail</NavLink>
+                      </li>
                     </ul>
                   </div>
                 )}
