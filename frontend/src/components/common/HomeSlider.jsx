@@ -175,6 +175,12 @@ const HomeSlider = ({ isShow = true }) => {
           <div>
             <ul className="text-[11px] sm:text-xs lg:text-sm flex flex-wrap gap-3 lg:gap-5 text-[rgb(51,51,51)]">
               <li>
+                <NavLink to="/cities-revenue">Revenue</NavLink>
+              </li>
+              <li>
+                <NavLink to="/cities-revenue">Admin Details</NavLink>
+              </li>
+              <li>
                 <NavLink to="/movie/addMovie">Add Movie</NavLink>
               </li>
               <li>

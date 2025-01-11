@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { cityRevenueApi } from "../../redux/reducer/revenueSlice";
+import HomeSlider from "../common/HomeSlider";
 
 const CityRevenue = () => {
   const dispatch = useDispatch();
   const { cityId } = useParams();
+  const { isLoading } = useSelector((state) => state.revenue);
   const [cityData, setCityData] = useState([]);
 
   useEffect(() => {
@@ -23,24 +27,91 @@ const CityRevenue = () => {
   }, []);
 
   return (
-    <div className="mt-5 flex flex-col gap-3">
-      <div>
-        <h1>City: {cityData?.cityName}</h1>
-        <h1>Revenue: {cityData?.cityRevenue}</h1>
-        <h1>Total Cities: {cityData?.cinemas?.length}</h1>
+    <>
+      <div className="hidden sm:block">
+        <HomeSlider isShow={false} />
       </div>
-      {cityData?.cinemas?.map((cinema) => (
-        <div key={cinema?.cinemaId}>
-          <h2>Cinema: {cinema?.cinemaName}</h2>
-          <h4>Revenue: {cinema?.totalRevenue}</h4>
-          <h4>Admin Name: {cinema?.adminDetails?.userName}</h4>
-          <h4>Admin Email: {cinema?.adminDetails?.email}</h4>
-          <Link to={`/admin-details/${cinema?.adminDetails?._id}`}>
-            Admin Details
-          </Link>
+      <div className="bg-gray-100 mx-auto px-5 sm:px-12 md:px-16 pb-[90px] sm:pb-10">
+        <div className="mt-7 mb-10 font-semibold">
+          <h1 className="mb-[10px] text-3xl font-medium">City Details</h1>
+          <h1>
+            City:{" "}
+            <span className="font-medium capitalize">{cityData?.cityName}</span>
+          </h1>
+          <h1>
+            Revenue:{" "}
+            <span className="font-medium">{cityData?.cityRevenue}</span>
+          </h1>
+          <h1>
+            Total Cinemas:{" "}
+            <span className="font-medium">{cityData?.cinemas?.length}</span>
+          </h1>
         </div>
-      ))}
-    </div>
+        <div className="my-5 flex items-center justify-between">
+          <h1 className="text-3xl font-medium">Cinemas Details</h1>
+        </div>
+        <div className="bg-white w-[95%] sm:w-[85%] lg:w-[70%]">
+          <Table className="border border-black sm:border-gray-500 rounded-xl">
+            <Thead className="bg-rose-500">
+              <Tr className="flex justify-evenly gap-x-10 rounded-t-md border-b sm:border-b-gray-500 px-6 py-2 text-white">
+                <Th className="sm:w-[25%] text-center text-sm font-medium uppercase">
+                  Cinema
+                </Th>
+                <Th className="sm:w-[25%] text-center text-sm font-medium uppercase">
+                  Revenue
+                </Th>
+                <Th className="sm:w-[25%] text-center text-sm font-medium uppercase">
+                  Admin Name
+                </Th>
+                <Th className="sm:w-[25%] text-center text-sm font-medium uppercase">
+                  Admin Details
+                </Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {isLoading ? (
+                <div className="my-20 flex items-center justify-center">
+                  <div className="custom-loader"></div>
+                </div>
+              ) : cityData?.cinemas?.length > 0 ? (
+                cityData?.cinemas?.map((cinema, index) => (
+                  <Tr
+                    key={cinema?.cinemaId}
+                    className={`flex items-center justify-evenly gap-x-10 ${
+                      index !== cityData?.cinemas?.length - 1 && "border-b"
+                    } sm:border-gray-400 px-6 py-6`}
+                  >
+                    <Td className="sm:w-[25%] mt-2 sm:mt-0 text-center text-sm font-medium">
+                      {cinema?.cinemaName}
+                    </Td>
+                    <Td className="sm:w-[25%] text-center text-sm font-medium">
+                      {cinema?.totalRevenue}
+                    </Td>
+                    <Td className="sm:w-[25%] text-center text-sm font-medium">
+                      {cinema?.adminDetails?.userName}
+                    </Td>
+                    <Td className="sm:w-[25%] mb-2 sm:mb-0 text-center text-sm font-medium">
+                      <Link
+                        to={`/admin-details/${cinema?.adminDetails?._id}`}
+                        className="text-rose-500 underline"
+                      >
+                        Admin Details
+                      </Link>
+                    </Td>
+                  </Tr>
+                ))
+              ) : (
+                <Tr>
+                  <Td className="py-10 text-center text-xl font-medium">
+                    No cinema found
+                  </Td>
+                </Tr>
+              )}
+            </Tbody>
+          </Table>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -35,7 +35,10 @@ export const bookingEndPoints = {
 };
 
 export const revenueEndPoints = {
-  ADMIN_REVENUE_API: BASE_URL + "/auth/admin-revenue-details",
-  SUPERADMIN_REVENUE_API: BASE_URL + "/auth/superadmin-revenue-details",
-  CITY_REVENUE_API: BASE_URL + "/auth/city-revenue-details",
+  ADMIN_CITY_REVENUE_API: BASE_URL + "/revenue/admin-city-revenue",
+  ADMIN_CITIES_REVENUE_API: BASE_URL + "/revenue/admin-cities-revenue",
+  ADMINS_DETAILS_API: BASE_URL + "/revenue/admins-details",
+  CITY_REVENUE_API: BASE_URL + "/revenue/city-revenue-details",
+  ADMIN_REVENUE_API: BASE_URL + "/revenue/admin-revenue-details",
+  SUPERADMIN_REVENUE_API: BASE_URL + "/revenue/superadmin-revenue-details",
 };
