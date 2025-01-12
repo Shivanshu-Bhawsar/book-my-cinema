@@ -36,15 +36,15 @@ const CityRevenue = () => {
           <h1 className="mb-[10px] text-3xl font-medium">City Details</h1>
           <h1>
             City:{" "}
-            <span className="font-medium capitalize">{cityData?.cityName}</span>
+            <span className="font-normal sm:font-medium capitalize">{cityData?.cityName}</span>
           </h1>
           <h1>
             Revenue:{" "}
-            <span className="font-medium">{cityData?.cityRevenue}</span>
+            <span className="font-normal sm:font-medium">{cityData?.cityRevenue}</span>
           </h1>
           <h1>
             Total Cinemas:{" "}
-            <span className="font-medium">{cityData?.cinemas?.length}</span>
+            <span className="font-normal sm:font-medium">{cityData?.cinemas?.length}</span>
           </h1>
         </div>
         <div className="my-5 flex items-center justify-between">
@@ -81,16 +81,16 @@ const CityRevenue = () => {
                       index !== cityData?.cinemas?.length - 1 && "border-b"
                     } sm:border-gray-400 px-6 py-6`}
                   >
-                    <Td className="sm:w-[25%] mt-2 sm:mt-0 text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] mt-2 sm:mt-0 text-center text-sm sm:font-medium">
                       {cinema?.cinemaName}
                     </Td>
-                    <Td className="sm:w-[25%] text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] text-center text-sm sm:font-medium">
                       {cinema?.totalRevenue}
                     </Td>
-                    <Td className="sm:w-[25%] text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] text-center text-sm sm:font-medium">
                       {cinema?.adminDetails?.userName}
                     </Td>
-                    <Td className="sm:w-[25%] mb-2 sm:mb-0 text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] mb-2 sm:mb-0 text-center text-sm sm:font-medium">
                       <Link
                         to={`/admin-details/${cinema?.adminDetails?._id}`}
                         className="text-rose-500 underline"

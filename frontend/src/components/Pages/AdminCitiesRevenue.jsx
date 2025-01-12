@@ -3,26 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import { superadminRevenueApi } from "../../redux/reducer/revenueSlice";
+import { adminCitiesRevenueApi } from "../../redux/reducer/revenueSlice";
 import HomeSlider from "../common/HomeSlider";
 
-const CitiesRevenue = () => {
+const AdminCitiesRevenue = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.revenue);
   const [revenueDetails, setRevenueDetails] = useState([]);
 
   useEffect(() => {
-    const fetchCitiesRevenue = async () => {
+    const fetchAdminCitiesRevenue = async () => {
       try {
-        const response = await dispatch(superadminRevenueApi());
-        if (superadminRevenueApi.fulfilled.match(response)) {
+        const response = await dispatch(adminCitiesRevenueApi());
+        if (adminCitiesRevenueApi.fulfilled.match(response)) {
           setRevenueDetails(response?.payload?.data || []);
         }
       } catch (err) {
-        console.error("Error fetching cities revenue:", err);
+        console.error("Error fetching admin cities revenue:", err);
       }
     };
-    fetchCitiesRevenue();
+    fetchAdminCitiesRevenue();
   }, []);
 
   return (
@@ -72,7 +72,7 @@ const CitiesRevenue = () => {
                     </Td>
                     <Td className="sm:w-[25%] mb-2 sm:mb-0 text-center text-sm sm:font-medium">
                       <Link
-                        to={`/city-revenue/${city?.cityId}`}
+                        to={`/admin-city-revenue/${city?.cityId}`}
                         className="text-rose-500 underline"
                       >
                         City Details
@@ -95,4 +95,4 @@ const CitiesRevenue = () => {
   );
 };
 
-export default CitiesRevenue;
+export default AdminCitiesRevenue;

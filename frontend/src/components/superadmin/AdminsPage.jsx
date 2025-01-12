@@ -67,16 +67,16 @@ const AdminsPage = () => {
                       index !== adminsData?.length - 1 && "border-b"
                     } sm:border-gray-400 px-4 md:px-6 py-6`}
                   >
-                    <Td className="sm:w-[25%] mt-2 sm:mt-0 text-center text-sm font-medium capitalize">
+                    <Td className="sm:w-[25%] mt-2 sm:mt-0 text-center text-sm sm:font-medium capitalize">
                       {admin?.userName}
                     </Td>
-                    <Td className="sm:w-[25%] text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] text-center text-sm sm:font-medium">
                       {admin?.email}
                     </Td>
-                    <Td className="sm:w-[25%] text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] text-center text-sm sm:font-medium">
                       {admin?.contactNumber}
                     </Td>
-                    <Td className="sm:w-[25%] mb-2 sm:mb-0 text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] mb-2 sm:mb-0 text-center text-sm sm:font-medium">
                       <Link
                         to={`/admin-details/${admin?._id}`}
                         className="text-rose-500 underline"

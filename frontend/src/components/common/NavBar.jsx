@@ -146,6 +146,11 @@ const NavBar = () => {
                       <li onClick={() => setMenuOpen(false)}>
                         <NavLink to="/show/liveYourShow">Live Show</NavLink>
                       </li>
+                      <li onClick={() => setMenuOpen(false)}>
+                        <NavLink to="/admin-cities-revenue">
+                          Cities Revenue
+                        </NavLink>
+                      </li>
                     </ul>
                   </div>
                 )}

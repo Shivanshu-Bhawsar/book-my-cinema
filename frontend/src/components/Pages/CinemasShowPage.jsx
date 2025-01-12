@@ -1,16 +1,70 @@
-import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchShowDetailes } from "../../redux/reducer/showSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import NavBar from "../common/NavBar";
 import HomeSlider from "../common/HomeSlider";
+import { fetchShowDetailes } from "../../redux/reducer/showSlice";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
 
 const CinemasShowPage = () => {
+  const [dateIndex, setDateIndex] = useState(0);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { movie_id } = useParams();
   const { cinemas, movieDetailes, loading } = useSelector(
     (state) => state.show
   );
+
+  // Function to get the next 7 dates starting from today
+  const getNextSevenDates = () => {
+    const dates = [];
+    const today = new Date();
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    // Loop through the next 7 days
+    for (let i = 0; i < 7; i++) {
+      const nextDate = new Date(today);
+      nextDate.setDate(today.getDate() + i);
+
+      // Get day, date, month, and year
+      const day = nextDate.toLocaleString("en-US", { weekday: "short" }); // Get abbreviated day (e.g., Mon, Tue)
+      const date = nextDate.getDate().toString().padStart(2, "0"); // Add leading zero if date is less than 10
+      const month = nextDate.getMonth(); // Get month index (0-based)
+      const year = nextDate.getFullYear();
+      const m = months[month]; // Corrected month access
+
+      // Push the object with day, date, month, and year
+      dates.push({
+        day,
+        date,
+        month: m, // Store the month name
+        year,
+      });
+    }
+
+    return dates;
+  };
+
+  // Example usage
+  const datesArray = getNextSevenDates();
 
   const consolidateData = (data) => {
     const map = new Map();
@@ -36,7 +90,7 @@ const CinemasShowPage = () => {
   //   hours = hours % 12 || 12; // Converts 0 to 12 for midnight
   //   hours = String(hours).padStart(2, "0"); // Ensure 2-digit format
 
-  //   return `${hours}:${minutes} ${amPm}`;
+  //   return ${hours}:${minutes} ${amPm};
   // };
 
   useEffect(() => {
@@ -46,14 +100,19 @@ const CinemasShowPage = () => {
     fetchShowsDetailesData(movie_id);
   }, [dispatch, movie_id]);
 
+  const dateFilterHandler = (date, index) => {
+    setDateIndex(index);
+    console.log(date);
+  };
+
   return (
-    <div>
+    <div className="bg-gray-100">
       <div className="hidden sm:block">
         <HomeSlider isShow={false} />
       </div>
       {loading ? (
-        <div className="mt-20 sm:mt-28 flex items-center justify-center">
-          <div className="custom-loader"></div>
+        <div className="w-screen h-screen flex items-center justify-center">
+          <div className="custom-loader text-center"></div>
         </div>
       ) : (
         <div className="my-5 sm:my-8">
@@ -77,14 +136,45 @@ const CinemasShowPage = () => {
               ))}
             </div>
           </div>
-          <div className="mt-5 h-[60px] border-t-[1px] border-gray-300"></div>
-          <div className="px-4 sm:px-8 md:px-10 py-3">
+
+          <div className="mt-5 px-6 sm:px-12 bg-gray-200 border-t-[1px] border-gray-300">
+            <div className="text-white w-1/2 h-auto overflow-hidden flex items-center pt-3 pb-3">
+              <Swiper
+                grabCursor={true}
+                slidesPerView={3} // Default slides per view for larger screens
+                loop={false}
+                navigation={true}
+                modules={[Navigation]}
+                draggable={true}
+                className="!p-0 !text-gray-600" // Make it full width
+              >
+                {datesArray.map((date, index) => (
+                  <SwiperSlide
+                    key={index}
+                    onClick={() => {
+                      dateFilterHandler(date, index);
+                    }}
+                    className={`!flex !flex-col !text-[rgb(255,234,235)] !w-[60px] !h-[50px] !p-2 !ml-3 !mr-3 !items-center !justify-center ${
+                      dateIndex === index ? "bg-gray-500" : "bg-rose-500"
+                    } rounded-md !text-[10px] font-bold hover:scale-105 transition-transform duration-300`}
+                  >
+                    <p>{date.day}</p>
+                    <p className="text-[13px]">{date.date}</p>
+                    <p>{date.month}</p>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+
+          <div className="bg-gray-100 px-4 sm:px-8 md:px-10 py-3">
             <div className="px-5 sm:px-8 py-3 bg-white">
               <div className="hidden mb-2 sm:flex justify-end items-center gap-3">
                 <div className="flex gap-2 items-center">
                   <div className="w-[8px] h-[8px] rounded-full bg-green-500"></div>
                   <div className="text-gray-400 text-[10px]">AVAILABLE</div>
                 </div>
+
                 <div className="flex gap-2 items-center">
                   <div className="w-[8px] h-[8px] rounded-full bg-orange-500"></div>
                   <div className="text-gray-400 text-[10px]">FAST FILLING</div>
@@ -101,9 +191,7 @@ const CinemasShowPage = () => {
               {consolidateData(cinemas)?.map((cinema, index) => (
                 <div
                   key={index}
-                  className={`w-full py-4 flex flex-col lg:flex-row gap-3 sm:gap-5 lg:gap-0 ${
-                    index != 0 && "border-t-[1px] border-gray-300"
-                  }`}
+                  className="w-full border-t-[1px] py-4 flex flex-col lg:flex-row gap-5 lg:gap-0"
                 >
                   <div className="lg:w-[45%] text-sm sm:font-medium">
                     <div className="mb-3 w-fit cursor-pointer hover:underline">

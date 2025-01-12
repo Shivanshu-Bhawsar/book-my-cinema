@@ -61,7 +61,7 @@ const BottomNavBar = () => {
         )}
         {user?.accountType === "Admin" && (
           <NavLink
-            to={user ? "/cities-revenue" : "/login"}
+            to={user ? "/admin-revenue" : "/login"}
             className={({ isActive }) =>
               isActive ? "text-rose-500" : "text-black"
             }

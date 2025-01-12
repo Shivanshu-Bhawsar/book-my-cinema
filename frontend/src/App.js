@@ -31,14 +31,16 @@ import BottomNavBar from "./components/common/BottomNavBar";
 import Profile from "./components/Pages/Profile";
 import CitiesRevenue from "./components/superadmin/CitiesRevenue";
 import CityRevenue from "./components/superadmin/CityRevenue";
-import AdminDetails from "./components/Pages/AdminDetails";
 import AdminsPage from "./components/superadmin/AdminsPage";
+import AdminCitiesRevenue from "./components/Pages/AdminCitiesRevenue";
+import AdminCityRevenue from "./components/Pages/AdminCityRevenue";
+import AdminRevenue from "./components/Pages/AdminRevenue";
+import AdminDetails from "./components/superadmin/AdminDetails";
 
 function App() {
   const user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
-  const isSuperAdmin = user?.accountType === "SuperAdmin";
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -132,18 +134,13 @@ function App() {
             </SuperAdminProtected>
           }
         />
+
         <Route
           path="/admin-details/:adminId"
           element={
-            isSuperAdmin ? (
-              <SuperAdminProtected>
-                <AdminDetails />
-              </SuperAdminProtected>
-            ) : (
-              <AdminProtected>
-                <AdminDetails />
-              </AdminProtected>
-            )
+            <SuperAdminProtected>
+              <AdminDetails />
+            </SuperAdminProtected>
           }
         />
 
@@ -188,6 +185,34 @@ function App() {
             </AdminProtected>
           }
         />
+
+        <Route
+          path="/admin-cities-revenue"
+          element={
+            <AdminProtected>
+              <AdminCitiesRevenue />
+            </AdminProtected>
+          }
+        />
+
+        <Route
+          path="/admin-city-revenue/:cityId"
+          element={
+            <AdminProtected>
+              <AdminCityRevenue />
+            </AdminProtected>
+          }
+        />
+
+        <Route
+          path="/admin-revenue"
+          element={
+            <AdminProtected>
+              <AdminRevenue />
+            </AdminProtected>
+          }
+        />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 

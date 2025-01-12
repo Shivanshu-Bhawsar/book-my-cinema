@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { adminRevenueApi } from "../../redux/reducer/revenueSlice";
 import HomeSlider from "../common/HomeSlider";
+import { useParams } from "react-router-dom";
 
 const AdminDetails = () => {
   const dispatch = useDispatch();
@@ -36,25 +36,27 @@ const AdminDetails = () => {
           <h1 className="mb-[10px] text-3xl font-medium">Admin Details</h1>
           <h1>
             Name:{" "}
-            <span className="font-medium">
+            <span className="font-normal sm:font-medium">
               {adminData?.adminDetails?.userName}
             </span>
           </h1>
           <h1>
             Email:{" "}
-            <span className="font-medium">
+            <span className="font-normal sm:font-medium">
               {adminData?.adminDetails?.email}
             </span>
           </h1>
           <h1>
             Contact No:{" "}
-            <span className="font-medium">
+            <span className="font-normal sm:font-medium">
               {adminData?.adminDetails?.contactNumber}
             </span>
           </h1>
           <h1>
-            Cinemas:{" "}
-            <span className="font-medium">{adminData?.cinemas?.length}</span>
+            Total Cinemas:{" "}
+            <span className="font-normal sm:font-medium">
+              {adminData?.cinemas?.length}
+            </span>
           </h1>
         </div>
         <div className="my-5 flex items-center justify-between">
@@ -88,13 +90,13 @@ const AdminDetails = () => {
                       index !== adminData?.cinemas?.length - 1 && "border-b"
                     } sm:border-gray-400 px-6 py-6`}
                   >
-                    <Td className="sm:w-[25%] mt-2 sm:mt-0 text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] mt-2 sm:mt-0 text-center text-sm sm:font-medium">
                       {cinema.cinemaName}
                     </Td>
-                    <Td className="sm:w-[25%] text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] text-center text-sm sm:font-medium">
                       {cinema?.totalRevenue}
                     </Td>
-                    <Td className="sm:w-[25%] mb-2 sm:mb-0 text-center text-sm font-medium">
+                    <Td className="sm:w-[25%] mb-2 sm:mb-0 text-center text-sm sm:font-medium">
                       {new Date().toDateString().split(" ").splice(1).join(" ")}
                     </Td>
                   </Tr>
