@@ -9,6 +9,7 @@ import { EffectCoverflow, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
+import "../../App.css";
 
 const CinemasShowPage = () => {
   const [dateIndex, setDateIndex] = useState(0);
@@ -102,7 +103,6 @@ const CinemasShowPage = () => {
 
   const dateFilterHandler = (date, index) => {
     setDateIndex(index);
-    console.log(date);
   };
 
   return (
@@ -137,8 +137,8 @@ const CinemasShowPage = () => {
             </div>
           </div>
 
-          <div className="mt-5 px-6 sm:px-12 bg-gray-200 border-t-[1px] border-gray-300">
-            <div className="text-white w-1/2 h-auto overflow-hidden flex items-center pt-3 pb-3">
+          <div className="mt-5 px-2 sm:px-12 bg-gray-200 border-t-[1px] border-gray-300">
+            <div className="text-white w-full sm:w-[75%] lg:w-1/2 h-auto overflow-hidden flex items-center pt-3 pb-3">
               <Swiper
                 grabCursor={true}
                 slidesPerView={3} // Default slides per view for larger screens
@@ -146,7 +146,7 @@ const CinemasShowPage = () => {
                 navigation={true}
                 modules={[Navigation]}
                 draggable={true}
-                className="!p-0 !text-gray-600" // Make it full width
+                className="!p-0" // Make it full width
               >
                 {datesArray.map((date, index) => (
                   <SwiperSlide
@@ -154,9 +154,15 @@ const CinemasShowPage = () => {
                     onClick={() => {
                       dateFilterHandler(date, index);
                     }}
-                    className={`!flex !flex-col !text-[rgb(255,234,235)] !w-[60px] !h-[50px] !p-2 !ml-3 !mr-3 !items-center !justify-center ${
-                      dateIndex === index ? "bg-gray-500" : "bg-rose-500"
-                    } rounded-md !text-[10px] font-bold hover:scale-105 transition-transform duration-300`}
+                    className={`!flex !flex-col !text-[rgb(234,238,255)] !w-[60px] !h-[50px] !p-2 !ml-3 !mr-3 !items-center !justify-center
+                    ${
+                      index === 0
+                        ? "!ml-14"
+                        : index === datesArray.length - 1 && "!mr-10"
+                    }
+                     ${
+                       dateIndex === index ? "bg-gray-500" : "bg-rose-500"
+                     } rounded-md !text-[10px] font-bold hover:scale-105 transition-transform duration-300`}
                   >
                     <p>{date.day}</p>
                     <p className="text-[13px]">{date.date}</p>

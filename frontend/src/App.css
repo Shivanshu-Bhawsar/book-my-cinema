@@ -30,13 +30,11 @@
 }
 
 .custom-bg-image {
-  background-image: linear-gradient(
-      90deg,
+  background-image: linear-gradient(90deg,
       rgb(26, 26, 26) 24.97%,
       rgb(26, 26, 26) 38.3%,
       rgba(26, 26, 26, 0.04) 97.47%,
-      rgb(26, 26, 26) 100%
-    ),
+      rgb(26, 26, 26) 100%),
     url("https://assets-in.bmscdn.com/iedb/movies/images/mobile/listing/xxlarge/bhool-bhulaiyaa-3-et00353996-1728474428.jpg");
 }
 
