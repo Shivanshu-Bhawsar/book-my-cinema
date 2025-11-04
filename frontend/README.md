@@ -1,70 +1,152 @@
-# Getting Started with Create React App
+# Book My Cinema — Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend client for the Book My Cinema application. It's built with React and Redux Toolkit, styled using Tailwind CSS, and uses Axios for API communication with the backend.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- Tech Stack
+- Project Structure
+- Components
+- Pages
+- State Management
+## Project Structure
 
-### `npm start`
+```
+frontend/
+├── public/                 # Static assets and metadata (index.html, manifest, etc.)
+├── src/
+│   ├── components/         # Reusable UI components
+│   │   ├── Auth/           # Login/Signup/OTP components
+│   │   ├── common/         # NavBar, Footer, HomeSlider, MovieCard, etc.
+│   │   ├── Pages/          # Page-level components (Home, MoviesPage, Profile, etc.)
+│   │   ├── protected/      # Route protection components
+│   │   ├── seatComponents/ # Seat UI components (Balcony, Regular, VIP)
+│   │   └── superadmin/     # Admin/superadmin UI components
+│   ├── context/            # Lightweight context providers (Auth)
+│   ├── redux/              # Redux store, slices, API helpers
+│   ├── utils/              # Utility functions and small components
+│   ├── App.js
+│   └── index.js
+├── package.json
+├── tailwind.config.js
+└── README.md
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The `src/components` folder contains UI parts used across the app. Notable groups:
 
-### `npm test`
+- Auth (`src/components/Auth`): `Login.jsx`, `Signup.jsx`, `CustomOtpInput.jsx`.
+- Common (`src/components/common`): `NavBar.jsx`, `Footer.jsx`, `HomeSlider.jsx`, `MovieCard.jsx`, `PremiereSlider.jsx`, `TicketBox.jsx`, `Skeleton.jsx`, `SliderComponent.jsx`.
+- Pages (`src/components/Pages`): page-level React components like `Home.jsx`, `MoviesPage.jsx`, `ShowSeats.jsx`, `Profile.jsx`, `TransactionPage.jsx`, `AddCinema.jsx`, `AddShow.jsx`.
+- Protected (`src/components/protected`): route guards like `AdminProtected.jsx`, `SuperAdminProtected.jsx`.
+- Seat components (`src/components/seatComponents`): `BalconySeat.jsx`, `RegularSeat.jsx`, `VipSeat.jsx`.
+- Superadmin (`src/components/superadmin`): movie management UI: `AddMoviePage.jsx`, `UpdateMoviePage.jsx`, `AdminsPage.jsx`, `CitiesRevenue.jsx`, etc.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pages
 
-### `npm run build`
+Major pages are under `src/components/Pages` and include:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Home — landing page with featured movies and sliders
+- Movies / All Movies — browse and search movies
+- Cinemas / Cinema Show Page — cinema-focused pages and showtimes
+- ShowSeats — select seats for a show
+- Profile — user profile and booking history
+- TransactionPage — payment & transaction history
+- Admin pages — AddCinema, AddShow, AdminRevenue, AdminCinemas, AdminCitiesRevenue
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## State Management
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project uses Redux Toolkit. The store and slices are under `src/redux/`.
 
-### `npm run eject`
+Common slices found in the codebase:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `authSlice` — authentication state
+- `movieSlice` — movie data and CRUD operations
+- `showSlice` — show timings and seat maps
+- `seatSlice` — seat selection and availability
+- `bookingSlice` — current booking and history
+- `paymentSlice` — payment status and verification
+- `revenueSlice` / `adminSlice` — admin and revenue data
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The store is initialized at `src/redux/store/store.js` and the app connects via `Provider` in `src/index.js`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Services
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+API helpers and connectors are in `src/redux/api.js` and `src/redux/utils/apiConnector.js` (or similar). These wrap Axios and manage base URLs, interceptors (auth tokens), and common error handling.
 
-## Learn More
+## Utils
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Utility modules include:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `FilterData.js` — data filtering helpers
+- `LoaderPage.jsx` — loading screen
+- `PremiereData.js`, `SliderData.js` and related arrays for UI content
+- `ScrollTop.js` — scroll restoration
 
-### Code Splitting
+## Data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Static or mock data used by the frontend lives in `src/utils/` files such as slider arrays and premiere data. Replace or connect these to backend endpoints as needed.
 
-### Analyzing the Bundle Size
+## Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Authentication (email/OTP-based flows)
+- Movie browsing and search
+- Cinema & show management (admin/superadmin)
+- Seat selection with multiple seat types (VIP, Balcony, Regular)
+- Booking workflow and Razorpay payments
+- Admin dashboards for revenue and cinema management
+- Responsive UI with sliders and previews
 
-### Making a Progressive Web App
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Create a `.env` file in `frontend/` with these variables (examples):
 
-### Advanced Configuration
+```env
+REACT_APP_BASE_URL=http://localhost:4000/api/v1
+REACT_APP_RAZORPAY_KEY=your_razorpay_key
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Adjust the base URL to point to your backend API.
 
-### Deployment
+## How to run
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Install dependencies and run locally (PowerShell example):
 
-### `npm run build` fails to minify
+```powershell
+cd frontend
+npm install
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Build for production:
+
+```powershell
+npm run build
+```
+
+Test (if applicable):
+
+```powershell
+npm test
+```
+
+## Deployment
+
+Build the app (`npm run build`) and serve the contents of the `build/` folder using any static host (Netlify, Vercel, Surge, nginx). Make sure environment variables are set in the hosting provider.
+
+## Troubleshooting
+
+- If the app fails to load, ensure `REACT_APP_BASE_URL` points to a running backend.
+- Check browser console for CORS or network errors.
+- Verify Node and npm versions are compatible with the project's dependencies.
+
+---
+
+If you'd like, I can also add:
+
+- an `ENV_EXAMPLE` file in the `frontend/` folder with stub values
+- a small README section with example API request/response for login or booking
+- a script or short checklist for deploying to Vercel or Netlify
+
+Tell me which of the above you'd like next and I will add it.
