@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TicketBox from "../common/TicketBox";
+import Skeleton from "../common/Skeleton";
 import { fetchAllBookings } from "../../redux/reducer/bookingSlice";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSlider from "../common/HomeSlider";
@@ -49,8 +50,8 @@ const TransactionPage = () => {
           Booking History
         </h1>
         {loading ? (
-          <div className="mt-20 sm:mt-28 flex items-center justify-center">
-            <div className="custom-loader"></div>
+          <div className="mt-1 w-full h-full">
+            <Skeleton />
           </div>
         ) : (
           <div className="w-full sm:w-[75%] md:w-[60%] lg:w-[55%] mb-20 sm:mb-10 mt-3 sm:mt-5 px-4 sm:px-7 flex flex-col flex-wrap justify-center items-center gap-5">
