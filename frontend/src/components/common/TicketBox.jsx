@@ -29,7 +29,7 @@ const TicketBox = ({ booking, onClose }) => {
     setBolconySeat(countBol);
     setRegularSeat(countReg);
     setVipSeat(countVip);
-  }, []);
+  }, [booking]);
 
   if (!booking) {
     return null;
@@ -81,6 +81,7 @@ const TicketBox = ({ booking, onClose }) => {
           <div className="w-full flex items-start p-2 justify-start gap-5 h-auto border-dashed border-[rgb(237,241,236)]] border-[1px]">
             <div className="flex-shrink-0">
               <img
+                alt="Movie Thumbnail"
                 src={booking.showId.movieId.thumbnail}
                 className="w-[80px] h-[100px] object-cover rounded-md"
               />

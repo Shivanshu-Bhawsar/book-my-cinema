@@ -24,7 +24,7 @@ const AdminCityRevenue = () => {
       }
     };
     fetchAdminCityRevenue();
-  }, []);
+  }, [cityId, dispatch]);
 
   return (
     <>

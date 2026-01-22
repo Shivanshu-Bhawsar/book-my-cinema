@@ -53,14 +53,14 @@ const AddShow = () => {
       }
     };
     fetchAdminCinemas();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const tempScreens = cinemas.find(
       (temp) => temp._id === formData.cinemaId
     )?.screens;
     setScreens(tempScreens);
-  }, [formData.cinemaId]);
+  }, [formData.cinemaId, cinemas]);
 
   return (
     <div className="bg-gray-100">

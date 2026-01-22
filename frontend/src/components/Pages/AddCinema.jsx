@@ -42,7 +42,7 @@ const AddCinema = () => {
 
   useEffect(() => {
     fetchCities();
-  }, []);
+  }, [fetchCities]);
 
   return (
     <div className="bg-gray-100">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchSeatsDetailes } from "../../redux/reducer/seatSlice";
@@ -138,7 +138,7 @@ const ShowSeats = () => {
     );
   };
 
-  const filterSeats = () => {
+  const filterSeats = useCallback(() => {
     if (showSeatsArray.length > 0) {
       setRegularSeat(
         showSeatsArray.filter((seat) => seat.seatId.seatType === "REGULAR")
@@ -154,7 +154,7 @@ const ShowSeats = () => {
       setBalconySeat([]);
       setVipSeat([]);
     }
-  };
+  }, [showSeatsArray]);
 
   // Update seat statuses via socket events
   const updateSeatStatuses = (updatedSeatIds, status) => {
@@ -242,7 +242,7 @@ const ShowSeats = () => {
 
   useEffect(() => {
     filterSeats();
-  }, [showSeatsArray]);
+  }, [filterSeats, showSeatsArray]);
 
   return (
     <div className="bg-gray-100">

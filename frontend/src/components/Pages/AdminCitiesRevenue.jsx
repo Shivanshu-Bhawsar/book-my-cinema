@@ -23,7 +23,7 @@ const AdminCitiesRevenue = () => {
       }
     };
     fetchAdminCitiesRevenue();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

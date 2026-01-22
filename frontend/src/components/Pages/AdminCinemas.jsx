@@ -18,7 +18,7 @@ const AdminCinemas = () => {
       }
     };
     fetchAdminCinemas();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="bg-gray-100">

@@ -25,7 +25,7 @@ const LiveYourShow = () => {
 
   useEffect(() => {
     fetchShows();
-  }, []);
+  }, [fetchShows]);
 
   return (
     <div className="bg-gray-100">

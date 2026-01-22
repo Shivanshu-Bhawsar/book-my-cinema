@@ -26,7 +26,7 @@ const AdminRevenue = () => {
       }
     };
     fetchAdminDetails();
-  }, []);
+  }, [adminId, dispatch]);
 
   return (
     <>
