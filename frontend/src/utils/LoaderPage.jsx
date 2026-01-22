@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-import clapBoard from "./clapBoard.png";
+// import clapBoard from "./clapBoard.png";
 import popcornLoaderfour from "./popcornLoader4.png";
 import "../App.css";
 
@@ -27,7 +27,7 @@ const LoaderPage = () => {
     });
 
     // Text Animation for spans
-    const spans = textElement.querySelectorAll("span");
+    // const spans = textElement.querySelectorAll("span");
     t1.from("h1 span", {
       y: 100, // Increase Y value for noticeable movement
       opacity: 0,

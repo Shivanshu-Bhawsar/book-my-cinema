@@ -13,18 +13,22 @@ const CityRevenue = () => {
   const [cityData, setCityData] = useState([]);
 
   useEffect(() => {
-    const fetchCityRevenue = async () => {
-      try {
-        const response = await dispatch(cityRevenueApi({ cityId }));
-        if (cityRevenueApi.fulfilled.match(response)) {
-          setCityData(response?.payload?.data || []);
-        }
-      } catch (err) {
-        console.error("Error fetching city revenue:", err);
+  const fetchCityRevenue = async () => {
+    try {
+      const response = await dispatch(cityRevenueApi({ cityId }));
+      if (cityRevenueApi.fulfilled.match(response)) {
+        setCityData(response?.payload?.data || []);
       }
-    };
+    } catch (err) {
+      console.error("Error fetching city revenue:", err);
+    }
+  };
+
+  if (cityId) {
     fetchCityRevenue();
-  }, []);
+  }
+}, [cityId, dispatch]);
+
 
   return (
     <>
