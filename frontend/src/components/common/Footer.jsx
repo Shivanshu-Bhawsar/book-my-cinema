@@ -8,10 +8,10 @@ const Footer = () => {
       {/* Partner Section */}
       <div className="w-full h-max flex items-center justify-between gap-3 mb-3 p-4">
         <div className="sm:text-left text-center font-[600] sm:text-[18px] text-[12px] font-sans text-white">
-          Design & Developed By
+          {/* Design & Developed By
           <br></br>
           Shivanshu Bhawsar, Sandeep Dubliya, Rohit Jaiswal, Yashwant Patel,
-          Uday Malakar
+          Uday Malakar */}
         </div>
         <div className="sm:w-[200px] sm:opacity-100 opacity-0 w-0 h-[40px] bg-rose-500 text-white text-center font-sans font-semibold rounded-md flex items-center justify-center">
           <button>Contact Today!</button>
