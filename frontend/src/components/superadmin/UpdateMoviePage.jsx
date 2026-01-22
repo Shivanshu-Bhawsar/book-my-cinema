@@ -18,32 +18,34 @@ const UpdateMoviePage = () => {
 
   const isMobile = useMediaQuery({ query: "(max-width: 400px)" });
 
-  const getMovie = async (movie_id) => {
-    const result = await dispatch(fetchMovieApi({ movieId: movie_id }));
+  const getMovie = useCallback(
+    async (movie_id) => {
+      const result = await dispatch(fetchMovieApi({ movieId: movie_id }));
 
-    if (fetchMovieApi.fulfilled.match(result)) {
-      // Dispatch the movie data to setFormData
-      dispatch(
-        setFormData({
-          movieName: result.payload.movieName,
-          categories: result.payload.categories,
-          releaseDate: result.payload.releaseDate,
-          summary: result.payload.summary,
-          cast: result.payload.cast,
-          crew: result.payload.crew,
-          supportingLanguages: result.payload.supportingLanguages,
-          thumbnailImage: result.payload.thumbnail,
-          bannerImage: result.payload.banner,
-          genres: result.payload.genres,
-        })
-      );
-    } else {
-      console.error(
-        "Fetch failed in update movie: ",
-        result.payload || result.error
-      );
-    }
-  };
+      if (fetchMovieApi.fulfilled.match(result)) {
+        dispatch(
+          setFormData({
+            movieName: result.payload.movieName,
+            categories: result.payload.categories,
+            releaseDate: result.payload.releaseDate,
+            summary: result.payload.summary,
+            cast: result.payload.cast,
+            crew: result.payload.crew,
+            supportingLanguages: result.payload.supportingLanguages,
+            thumbnailImage: result.payload.thumbnail,
+            bannerImage: result.payload.banner,
+            genres: result.payload.genres,
+          }),
+        );
+      } else {
+        console.error(
+          "Fetch failed in update movie: ",
+          result.payload || result.error,
+        );
+      }
+    },
+    [dispatch],
+  );
 
   // Handle text input changes
   const handleInputChange = (e) => {
@@ -81,8 +83,10 @@ const UpdateMoviePage = () => {
   };
 
   useEffect(() => {
-    getMovie(movie_id);
-  }, [dispatch, movie_id]);
+    if (movie_id) {
+      getMovie(movie_id);
+    }
+  }, [getMovie, movie_id]);
 
   return (
     <div className="bg-gray-100">
@@ -266,7 +270,7 @@ const UpdateMoviePage = () => {
                         id={supportingLanguage}
                         value={supportingLanguage}
                         checked={formData.supportingLanguages.includes(
-                          supportingLanguage
+                          supportingLanguage,
                         )}
                         onChange={(e) =>
                           handleCheckboxChange(e, "supportingLanguages")
@@ -280,7 +284,7 @@ const UpdateMoviePage = () => {
                         {supportingLanguage}
                       </label>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             </div>
