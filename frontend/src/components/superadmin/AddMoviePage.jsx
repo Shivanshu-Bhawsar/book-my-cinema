@@ -59,7 +59,7 @@ const AddMoviePage = () => {
 
   useEffect(() => {
     dispatch(resetFormData());
-  }, []);
+  }, [dispatch]);
 
   if (loading) {
     return (

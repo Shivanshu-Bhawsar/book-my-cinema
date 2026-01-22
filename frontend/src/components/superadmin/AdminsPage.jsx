@@ -23,7 +23,7 @@ const AdminsPage = () => {
       }
     };
     fetchAdminsData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
