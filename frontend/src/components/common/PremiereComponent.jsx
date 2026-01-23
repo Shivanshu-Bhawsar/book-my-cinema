@@ -1,6 +1,5 @@
 import React from "react";
 import playImg from "../../utils/play.jpg";
-import premiereArray from "../../utils/PremiereData";
 import PremiereSlider from "./PremiereSlider";
 
 const PremiereComponent = () => {

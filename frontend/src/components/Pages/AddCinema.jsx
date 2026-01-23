@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { addCinema, getCities } from "../../redux/reducer/adminSlice";
@@ -17,12 +17,12 @@ const AddCinema = () => {
   const [formData, setFormData] = useState(initialState);
   const [cities, setCities] = useState([]);
 
-  const fetchCities = async () => {
+  const fetchCities = useCallback(async () => {
     const result = await dispatch(getCities());
     if (getCities.fulfilled.match(result)) {
       setCities(result?.payload?.data);
     }
-  };
+  }, [dispatch]);
 
   const handleOnChange = (e) => {
     setFormData((prevData) => ({

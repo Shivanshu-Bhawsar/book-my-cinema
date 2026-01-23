@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { liveYourShow, getUnliveShows } from "../../redux/reducer/adminSlice";
 import HomeSlider from "../common/HomeSlider";
@@ -9,12 +9,12 @@ const LiveYourShow = () => {
   const { isLoading } = useSelector((state) => state.admin);
   const [shows, setShows] = useState([]);
 
-  const fetchShows = async () => {
+  const fetchShows = useCallback(async () => {
     const result = await dispatch(getUnliveShows());
     if (getUnliveShows.fulfilled.match(result)) {
       setShows(result?.payload?.data || []);
     }
-  };
+  }, [dispatch]);
 
   const handleLiveYourShow = async (showId) => {
     const result = await dispatch(liveYourShow(showId));

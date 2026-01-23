@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useLayoutEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -103,6 +103,7 @@ const Home = () => {
             {liveEventsArray.map((elem, index) => (
               <img
                 src={elem.img}
+                alt="img-2"
                 className="sm:w-[230px] sm:h-[230px] rounded-md w-[150px]"
                 key={index}
               />
@@ -111,7 +112,7 @@ const Home = () => {
         </div>
       </div>
       <div className="w-full sm:h-0 p-2 mt-3 sm:opacity-0 opacity-100">
-        <img src={offerBanner}></img>
+        <img alt="img-3" src={offerBanner}></img>
       </div>
       <div className="h-max p-18 mt-5 mb-0 sm:mb-5">
         <SliderComponent />

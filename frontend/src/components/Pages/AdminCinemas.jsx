@@ -39,7 +39,7 @@ const AdminCinemas = () => {
               <div
                 key={cinema._id}
                 className={`py-4 flex justify-between gap-8 sm:gap-24 ${
-                  index != 0 && "border-t-[1px] border-black"
+                  index !== 0 && "border-t-[1px] border-black"
                 }`}
               >
                 <div>

@@ -238,7 +238,7 @@ const ShowSeats = () => {
         filterSeats();
       }
     }
-  }, [seatsInfo, timing]);
+  }, [seatsInfo, timing, filterSeats]);
 
   useEffect(() => {
     filterSeats();

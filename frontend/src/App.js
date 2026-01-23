@@ -38,9 +38,6 @@ import AdminRevenue from "./components/Pages/AdminRevenue";
 import AdminDetails from "./components/superadmin/AdminDetails";
 
 function App() {
-  const user = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
-    : null;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

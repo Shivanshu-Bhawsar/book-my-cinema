@@ -15,7 +15,7 @@ const TicketBox = ({ booking, onClose }) => {
     let countBol = [];
 
     if (booking) {
-      booking.bookedSeats.map((seat) => {
+      booking.bookedSeats.forEach((seat) => {
         if (seat.seatId.seatType === "REGULAR") {
           countReg.push(seat.seatId.seatNumber);
         } else if (seat.seatId.seatType === "BALCONY") {
@@ -78,31 +78,31 @@ const TicketBox = ({ booking, onClose }) => {
             className="cursor-pointer text-lg text-gray-600 hover:text-black"
           />
         </div>
-          <div className="w-full flex items-start p-2 justify-start gap-5 h-auto border-dashed border-[rgb(237,241,236)]] border-[1px]">
-            <div className="flex-shrink-0">
-              <img
-                alt="Movie Thumbnail"
-                src={booking.showId.movieId.thumbnail}
-                className="w-[80px] h-[100px] object-cover rounded-md"
-              />
-            </div>
-            <div className="flex flex-col h-full gap-2">
-              <h2 className="sm:text-[15px] text-[13px] font-[600] text-[rgb(31,31,31)] font-sans">
-                {booking.showId.movieId.movieName}
-              </h2>
-              <div className="flex flex-col gap-1">
-                <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs">
-                  {`${booking.showId.movieId.supportingLanguages}, 2D`}
-                </p>
-                <p className="text-[rgb(31,31,31)] sm:text-[13px] text-xs">{`${formatDate(
-                  booking.showId.showStart,
-                  booking.showId.timing,
-                  booking.showId.showEnd
-                )}`}</p>
-                <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs capitalize">{`${booking.showId.cinemaId.cinemaName}, ${booking.showId.cinemaId.cityId.cityName}`}</p>
-              </div>
+        <div className="w-full flex items-start p-2 justify-start gap-5 h-auto border-dashed border-[rgb(237,241,236)]] border-[1px]">
+          <div className="flex-shrink-0">
+            <img
+              alt="Movie Thumbnail"
+              src={booking.showId.movieId.thumbnail}
+              className="w-[80px] h-[100px] object-cover rounded-md"
+            />
+          </div>
+          <div className="flex flex-col h-full gap-2">
+            <h2 className="sm:text-[15px] text-[13px] font-[600] text-[rgb(31,31,31)] font-sans">
+              {booking.showId.movieId.movieName}
+            </h2>
+            <div className="flex flex-col gap-1">
+              <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs">
+                {`${booking.showId.movieId.supportingLanguages}, 2D`}
+              </p>
+              <p className="text-[rgb(31,31,31)] sm:text-[13px] text-xs">{`${formatDate(
+                booking.showId.showStart,
+                booking.showId.timing,
+                booking.showId.showEnd,
+              )}`}</p>
+              <p className="text-[rgb(139,139,139)] sm:text-[13px] text-xs capitalize">{`${booking.showId.cinemaId.cinemaName}, ${booking.showId.cinemaId.cityId.cityName}`}</p>
             </div>
           </div>
+        </div>
         {/* <div className="flex items-center w-full justify-between">
           <div className="w-full h-[1px] border-dashed border-[rgb(237,241,236)]] border-[1px]"></div>
         </div> */}

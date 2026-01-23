@@ -251,6 +251,7 @@ const AllMoviesPage = () => {
             {liveEventsArray.map((elem, index) => (
               <img
                 src={elem.img}
+                alt="img-1"
                 className="sm:w-[230px] sm:h-[230px] rounded-md w-[150px]"
                 key={index}
               />

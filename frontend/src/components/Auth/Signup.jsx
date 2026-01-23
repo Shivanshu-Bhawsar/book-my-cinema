@@ -173,6 +173,7 @@ const Signup = () => {
             <div className="relative flex items-center">
               <img
                 src="https://cdn-icons-png.flaticon.com/128/330/330439.png"
+                alt="icon-img"
                 className="mr-2 w-6 h-6"
               />
               <span>+91</span>
